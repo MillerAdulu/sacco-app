@@ -65,6 +65,7 @@ class LoginFormState extends State<LoginForm> {
   void _login() {
     if (_loginFormKey.currentState.validate()) {
       _loginFormKey.currentState.save();
+      
       Navigator.pushNamed(context, '/home');
     }
   }

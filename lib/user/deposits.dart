@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:sedcapp/partials/drawer.dart';
-import 'package:sedcapp/models/deposit.dart';
+import 'package:sedcapp/models/deposit/deposit.dart';
 import 'package:sedcapp/futures/fetchdeposits.dart';
 
 class Deposits extends StatelessWidget {
@@ -33,7 +33,6 @@ class Deposits extends StatelessWidget {
                   },
                 )
               : Center(child: CircularProgressIndicator());
-          ;
         },
       ),
     );
