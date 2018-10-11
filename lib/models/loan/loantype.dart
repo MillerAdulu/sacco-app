@@ -9,6 +9,7 @@ abstract class LoanType implements Built<LoanType, LoanTypeBuilder> {
   int get loanTypeId;
   String get loanTypeName;
   String get createdAt;
+  @nullable
   String get updatedAt;
 
   LoanType._();

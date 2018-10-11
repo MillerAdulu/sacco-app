@@ -50,6 +50,12 @@ class _$DepositSerializer implements StructuredSerializer<Deposit> {
       serializers.serialize(object.createdAt,
           specifiedType: const FullType(String)),
     ];
+    if (object.updatedAt != null) {
+      result
+        ..add('updatedAt')
+        ..add(serializers.serialize(object.updatedAt,
+            specifiedType: const FullType(String)));
+    }
 
     return result;
   }
@@ -89,6 +95,10 @@ class _$DepositSerializer implements StructuredSerializer<Deposit> {
           result.createdAt = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'updatedAt':
+          result.updatedAt = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
       }
     }
 
@@ -109,6 +119,8 @@ class _$Deposit extends Deposit {
   final String comment;
   @override
   final String createdAt;
+  @override
+  final String updatedAt;
 
   factory _$Deposit([void updates(DepositBuilder b)]) =>
       (new DepositBuilder()..update(updates)).build();
@@ -119,7 +131,8 @@ class _$Deposit extends Deposit {
       this.paymentMethod,
       this.depositAmount,
       this.comment,
-      this.createdAt})
+      this.createdAt,
+      this.updatedAt})
       : super._() {
     if (memberDepositId == null) {
       throw new BuiltValueNullFieldError('Deposit', 'memberDepositId');
@@ -157,7 +170,8 @@ class _$Deposit extends Deposit {
         paymentMethod == other.paymentMethod &&
         depositAmount == other.depositAmount &&
         comment == other.comment &&
-        createdAt == other.createdAt;
+        createdAt == other.createdAt &&
+        updatedAt == other.updatedAt;
   }
 
   @override
@@ -165,11 +179,13 @@ class _$Deposit extends Deposit {
     return $jf($jc(
         $jc(
             $jc(
-                $jc($jc($jc(0, memberDepositId.hashCode), member.hashCode),
-                    paymentMethod.hashCode),
-                depositAmount.hashCode),
-            comment.hashCode),
-        createdAt.hashCode));
+                $jc(
+                    $jc($jc($jc(0, memberDepositId.hashCode), member.hashCode),
+                        paymentMethod.hashCode),
+                    depositAmount.hashCode),
+                comment.hashCode),
+            createdAt.hashCode),
+        updatedAt.hashCode));
   }
 
   @override
@@ -180,7 +196,8 @@ class _$Deposit extends Deposit {
           ..add('paymentMethod', paymentMethod)
           ..add('depositAmount', depositAmount)
           ..add('comment', comment)
-          ..add('createdAt', createdAt))
+          ..add('createdAt', createdAt)
+          ..add('updatedAt', updatedAt))
         .toString();
   }
 }
@@ -216,6 +233,10 @@ class DepositBuilder implements Builder<Deposit, DepositBuilder> {
   String get createdAt => _$this._createdAt;
   set createdAt(String createdAt) => _$this._createdAt = createdAt;
 
+  String _updatedAt;
+  String get updatedAt => _$this._updatedAt;
+  set updatedAt(String updatedAt) => _$this._updatedAt = updatedAt;
+
   DepositBuilder();
 
   DepositBuilder get _$this {
@@ -226,6 +247,7 @@ class DepositBuilder implements Builder<Deposit, DepositBuilder> {
       _depositAmount = _$v.depositAmount;
       _comment = _$v.comment;
       _createdAt = _$v.createdAt;
+      _updatedAt = _$v.updatedAt;
       _$v = null;
     }
     return this;
@@ -255,7 +277,8 @@ class DepositBuilder implements Builder<Deposit, DepositBuilder> {
               paymentMethod: paymentMethod.build(),
               depositAmount: depositAmount,
               comment: comment,
-              createdAt: createdAt);
+              createdAt: createdAt,
+              updatedAt: updatedAt);
     } catch (_) {
       String _$failedField;
       try {

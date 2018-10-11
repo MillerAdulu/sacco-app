@@ -9,6 +9,7 @@ abstract class LoanRepaymentStatus implements Built<LoanRepaymentStatus, LoanRep
   int get loanRepaymentStatusId;
   String get loanRepaymentStatus;
   String get createdAt;
+  @nullable
   String get updatedAt;
 
   LoanRepaymentStatus._();

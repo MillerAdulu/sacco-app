@@ -15,6 +15,8 @@ abstract class Deposit implements Built<Deposit, DepositBuilder> {
   double get depositAmount;
   String get comment;
   String get createdAt;
+  @nullable
+  String get updatedAt;
 
   Deposit._();
   factory Deposit([updates(DepositBuilder depositBuilder)]) = _$Deposit;

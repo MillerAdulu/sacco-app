@@ -26,6 +26,7 @@ abstract class Address implements Built<Address, AddressBuilder> {
   String get houseNumber;
 
   String get createdAt;
+  @nullable
   String get updatedAt;
 
   Address._();

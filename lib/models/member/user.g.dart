@@ -48,10 +48,22 @@ class _$UserSerializer implements StructuredSerializer<User> {
       'token',
       serializers.serialize(object.token,
           specifiedType: const FullType(String)),
-      'member',
-      serializers.serialize(object.member,
-          specifiedType: const FullType(Member)),
+      'createdAt',
+      serializers.serialize(object.createdAt,
+          specifiedType: const FullType(String)),
     ];
+    if (object.member != null) {
+      result
+        ..add('member')
+        ..add(serializers.serialize(object.member,
+            specifiedType: const FullType(Member)));
+    }
+    if (object.updatedAt != null) {
+      result
+        ..add('updatedAt')
+        ..add(serializers.serialize(object.updatedAt,
+            specifiedType: const FullType(String)));
+    }
 
     return result;
   }
@@ -95,6 +107,14 @@ class _$UserSerializer implements StructuredSerializer<User> {
           result.member.replace(serializers.deserialize(value,
               specifiedType: const FullType(Member)) as Member);
           break;
+        case 'createdAt':
+          result.createdAt = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'updatedAt':
+          result.updatedAt = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
       }
     }
 
@@ -117,6 +137,10 @@ class _$User extends User {
   final String token;
   @override
   final Member member;
+  @override
+  final String createdAt;
+  @override
+  final String updatedAt;
 
   factory _$User([void updates(UserBuilder b)]) =>
       (new UserBuilder()..update(updates)).build();
@@ -128,7 +152,9 @@ class _$User extends User {
       this.phoneNumber,
       this.accessLevel,
       this.token,
-      this.member})
+      this.member,
+      this.createdAt,
+      this.updatedAt})
       : super._() {
     if (userId == null) {
       throw new BuiltValueNullFieldError('User', 'userId');
@@ -148,8 +174,8 @@ class _$User extends User {
     if (token == null) {
       throw new BuiltValueNullFieldError('User', 'token');
     }
-    if (member == null) {
-      throw new BuiltValueNullFieldError('User', 'member');
+    if (createdAt == null) {
+      throw new BuiltValueNullFieldError('User', 'createdAt');
     }
   }
 
@@ -170,7 +196,9 @@ class _$User extends User {
         phoneNumber == other.phoneNumber &&
         accessLevel == other.accessLevel &&
         token == other.token &&
-        member == other.member;
+        member == other.member &&
+        createdAt == other.createdAt &&
+        updatedAt == other.updatedAt;
   }
 
   @override
@@ -179,12 +207,16 @@ class _$User extends User {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc($jc(0, userId.hashCode), userName.hashCode),
-                        email.hashCode),
-                    phoneNumber.hashCode),
-                accessLevel.hashCode),
-            token.hashCode),
-        member.hashCode));
+                    $jc(
+                        $jc(
+                            $jc($jc($jc(0, userId.hashCode), userName.hashCode),
+                                email.hashCode),
+                            phoneNumber.hashCode),
+                        accessLevel.hashCode),
+                    token.hashCode),
+                member.hashCode),
+            createdAt.hashCode),
+        updatedAt.hashCode));
   }
 
   @override
@@ -196,7 +228,9 @@ class _$User extends User {
           ..add('phoneNumber', phoneNumber)
           ..add('accessLevel', accessLevel)
           ..add('token', token)
-          ..add('member', member))
+          ..add('member', member)
+          ..add('createdAt', createdAt)
+          ..add('updatedAt', updatedAt))
         .toString();
   }
 }
@@ -232,6 +266,14 @@ class UserBuilder implements Builder<User, UserBuilder> {
   MemberBuilder get member => _$this._member ??= new MemberBuilder();
   set member(MemberBuilder member) => _$this._member = member;
 
+  String _createdAt;
+  String get createdAt => _$this._createdAt;
+  set createdAt(String createdAt) => _$this._createdAt = createdAt;
+
+  String _updatedAt;
+  String get updatedAt => _$this._updatedAt;
+  set updatedAt(String updatedAt) => _$this._updatedAt = updatedAt;
+
   UserBuilder();
 
   UserBuilder get _$this {
@@ -243,6 +285,8 @@ class UserBuilder implements Builder<User, UserBuilder> {
       _accessLevel = _$v.accessLevel;
       _token = _$v.token;
       _member = _$v.member?.toBuilder();
+      _createdAt = _$v.createdAt;
+      _updatedAt = _$v.updatedAt;
       _$v = null;
     }
     return this;
@@ -273,12 +317,14 @@ class UserBuilder implements Builder<User, UserBuilder> {
               phoneNumber: phoneNumber,
               accessLevel: accessLevel,
               token: token,
-              member: member.build());
+              member: _member?.build(),
+              createdAt: createdAt,
+              updatedAt: updatedAt);
     } catch (_) {
       String _$failedField;
       try {
         _$failedField = 'member';
-        member.build();
+        _member?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'User', _$failedField, e.toString());

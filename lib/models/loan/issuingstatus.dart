@@ -9,6 +9,7 @@ abstract class LoanIssuingStatus implements Built<LoanIssuingStatus, LoanIssuing
   int get loanIssuingStatusId;
   String get loanIssuingStatus;
   String get createdAt;
+  @nullable
   String get updatedAt;
 
   LoanIssuingStatus._();

@@ -73,10 +73,13 @@ class _$AddressSerializer implements StructuredSerializer<Address> {
       'createdAt',
       serializers.serialize(object.createdAt,
           specifiedType: const FullType(String)),
-      'updatedAt',
-      serializers.serialize(object.updatedAt,
-          specifiedType: const FullType(String)),
     ];
+    if (object.updatedAt != null) {
+      result
+        ..add('updatedAt')
+        ..add(serializers.serialize(object.updatedAt,
+            specifiedType: const FullType(String)));
+    }
 
     return result;
   }
@@ -252,9 +255,6 @@ class _$Address extends Address {
     }
     if (createdAt == null) {
       throw new BuiltValueNullFieldError('Address', 'createdAt');
-    }
-    if (updatedAt == null) {
-      throw new BuiltValueNullFieldError('Address', 'updatedAt');
     }
   }
 

@@ -18,6 +18,7 @@ abstract class PaymentDetail implements Built<PaymentDetail, PaymentDetailBuilde
   String get serviceProvider;
   String get phoneNumber;
   String get createdAt;
+  @nullable
   String get updatedAt;
 
   PaymentDetail._();

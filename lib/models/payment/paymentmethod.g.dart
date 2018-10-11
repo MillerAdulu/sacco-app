@@ -38,7 +38,16 @@ class _$PaymentMethodSerializer implements StructuredSerializer<PaymentMethod> {
       'paymentMethod',
       serializers.serialize(object.paymentMethod,
           specifiedType: const FullType(String)),
+      'createdAt',
+      serializers.serialize(object.createdAt,
+          specifiedType: const FullType(String)),
     ];
+    if (object.updatedAt != null) {
+      result
+        ..add('updatedAt')
+        ..add(serializers.serialize(object.updatedAt,
+            specifiedType: const FullType(String)));
+    }
 
     return result;
   }
@@ -62,6 +71,14 @@ class _$PaymentMethodSerializer implements StructuredSerializer<PaymentMethod> {
           result.paymentMethod = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'createdAt':
+          result.createdAt = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'updatedAt':
+          result.updatedAt = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
       }
     }
 
@@ -74,16 +91,28 @@ class _$PaymentMethod extends PaymentMethod {
   final int paymentMethodId;
   @override
   final String paymentMethod;
+  @override
+  final String createdAt;
+  @override
+  final String updatedAt;
 
   factory _$PaymentMethod([void updates(PaymentMethodBuilder b)]) =>
       (new PaymentMethodBuilder()..update(updates)).build();
 
-  _$PaymentMethod._({this.paymentMethodId, this.paymentMethod}) : super._() {
+  _$PaymentMethod._(
+      {this.paymentMethodId,
+      this.paymentMethod,
+      this.createdAt,
+      this.updatedAt})
+      : super._() {
     if (paymentMethodId == null) {
       throw new BuiltValueNullFieldError('PaymentMethod', 'paymentMethodId');
     }
     if (paymentMethod == null) {
       throw new BuiltValueNullFieldError('PaymentMethod', 'paymentMethod');
+    }
+    if (createdAt == null) {
+      throw new BuiltValueNullFieldError('PaymentMethod', 'createdAt');
     }
   }
 
@@ -99,19 +128,26 @@ class _$PaymentMethod extends PaymentMethod {
     if (identical(other, this)) return true;
     return other is PaymentMethod &&
         paymentMethodId == other.paymentMethodId &&
-        paymentMethod == other.paymentMethod;
+        paymentMethod == other.paymentMethod &&
+        createdAt == other.createdAt &&
+        updatedAt == other.updatedAt;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, paymentMethodId.hashCode), paymentMethod.hashCode));
+    return $jf($jc(
+        $jc($jc($jc(0, paymentMethodId.hashCode), paymentMethod.hashCode),
+            createdAt.hashCode),
+        updatedAt.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('PaymentMethod')
           ..add('paymentMethodId', paymentMethodId)
-          ..add('paymentMethod', paymentMethod))
+          ..add('paymentMethod', paymentMethod)
+          ..add('createdAt', createdAt)
+          ..add('updatedAt', updatedAt))
         .toString();
   }
 }
@@ -130,12 +166,22 @@ class PaymentMethodBuilder
   set paymentMethod(String paymentMethod) =>
       _$this._paymentMethod = paymentMethod;
 
+  String _createdAt;
+  String get createdAt => _$this._createdAt;
+  set createdAt(String createdAt) => _$this._createdAt = createdAt;
+
+  String _updatedAt;
+  String get updatedAt => _$this._updatedAt;
+  set updatedAt(String updatedAt) => _$this._updatedAt = updatedAt;
+
   PaymentMethodBuilder();
 
   PaymentMethodBuilder get _$this {
     if (_$v != null) {
       _paymentMethodId = _$v.paymentMethodId;
       _paymentMethod = _$v.paymentMethod;
+      _createdAt = _$v.createdAt;
+      _updatedAt = _$v.updatedAt;
       _$v = null;
     }
     return this;
@@ -158,7 +204,10 @@ class PaymentMethodBuilder
   _$PaymentMethod build() {
     final _$result = _$v ??
         new _$PaymentMethod._(
-            paymentMethodId: paymentMethodId, paymentMethod: paymentMethod);
+            paymentMethodId: paymentMethodId,
+            paymentMethod: paymentMethod,
+            createdAt: createdAt,
+            updatedAt: updatedAt);
     replace(_$result);
     return _$result;
   }

@@ -10,6 +10,7 @@ abstract class PostOffice implements Built<PostOffice, PostOfficeBuilder> {
   String get postOfficeCode;
   String get postOfficeName;
   String get createdAt;
+  @nullable
   String get updatedAt;
 
   PostOffice._();

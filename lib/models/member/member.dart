@@ -12,14 +12,23 @@ abstract class Member implements Built<Member, MemberBuilder> {
   String get identificationNumber;
   String get firstName;
   String get lastName;
+  @nullable
   String get otherName;
   String get dateOfBirth;
   String get phoneNumber;
+  @nullable
   String get email;
+  @nullable
   String get kraPin;
+  @nullable
   bool get gender;
+  @nullable
   String get passportPhoto;
   MaritalStatus get maritalStatusInfo;
+
+  String get createdAt;
+  @nullable
+  String get updatedAt;
 
   Member._();
   factory Member([updates(MemberBuilder memberBuilder)]) = _$Member;

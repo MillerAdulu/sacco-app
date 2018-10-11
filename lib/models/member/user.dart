@@ -14,7 +14,11 @@ abstract class User implements Built<User, UserBuilder> {
   String get phoneNumber;
   String get accessLevel;
   String get token;
+  @nullable
   Member get member;
+  String get createdAt;
+  @nullable
+  String get updatedAt;
 
   User._();
   factory User([updates(UserBuilder userBuilder)]) = _$User;

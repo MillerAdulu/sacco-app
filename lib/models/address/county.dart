@@ -9,6 +9,7 @@ abstract class County implements Built<County, CountyBuilder> {
   int get localityId;
   String get localityName;
   String get createdAt;
+  @nullable
   String get updatedAt;
 
   County._();

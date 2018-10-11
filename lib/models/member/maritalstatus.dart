@@ -7,8 +7,10 @@ part 'maritalstatus.g.dart';
 
 abstract class MaritalStatus implements Built<MaritalStatus, MaritalStatusBuilder> {
   int get maritalStatusId;
+  @nullable
   String get maritalStatus;
   String get createdAt;
+  @nullable
   String get updatedAt;
 
   MaritalStatus._();

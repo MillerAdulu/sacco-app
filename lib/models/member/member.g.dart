@@ -43,30 +43,55 @@ class _$MemberSerializer implements StructuredSerializer<Member> {
       'lastName',
       serializers.serialize(object.lastName,
           specifiedType: const FullType(String)),
-      'otherName',
-      serializers.serialize(object.otherName,
-          specifiedType: const FullType(String)),
       'dateOfBirth',
       serializers.serialize(object.dateOfBirth,
           specifiedType: const FullType(String)),
       'phoneNumber',
       serializers.serialize(object.phoneNumber,
           specifiedType: const FullType(String)),
-      'email',
-      serializers.serialize(object.email,
-          specifiedType: const FullType(String)),
-      'kraPin',
-      serializers.serialize(object.kraPin,
-          specifiedType: const FullType(String)),
-      'gender',
-      serializers.serialize(object.gender, specifiedType: const FullType(bool)),
-      'passportPhoto',
-      serializers.serialize(object.passportPhoto,
-          specifiedType: const FullType(String)),
       'maritalStatusInfo',
       serializers.serialize(object.maritalStatusInfo,
           specifiedType: const FullType(MaritalStatus)),
+      'createdAt',
+      serializers.serialize(object.createdAt,
+          specifiedType: const FullType(String)),
     ];
+    if (object.otherName != null) {
+      result
+        ..add('otherName')
+        ..add(serializers.serialize(object.otherName,
+            specifiedType: const FullType(String)));
+    }
+    if (object.email != null) {
+      result
+        ..add('email')
+        ..add(serializers.serialize(object.email,
+            specifiedType: const FullType(String)));
+    }
+    if (object.kraPin != null) {
+      result
+        ..add('kraPin')
+        ..add(serializers.serialize(object.kraPin,
+            specifiedType: const FullType(String)));
+    }
+    if (object.gender != null) {
+      result
+        ..add('gender')
+        ..add(serializers.serialize(object.gender,
+            specifiedType: const FullType(bool)));
+    }
+    if (object.passportPhoto != null) {
+      result
+        ..add('passportPhoto')
+        ..add(serializers.serialize(object.passportPhoto,
+            specifiedType: const FullType(String)));
+    }
+    if (object.updatedAt != null) {
+      result
+        ..add('updatedAt')
+        ..add(serializers.serialize(object.updatedAt,
+            specifiedType: const FullType(String)));
+    }
 
     return result;
   }
@@ -130,6 +155,14 @@ class _$MemberSerializer implements StructuredSerializer<Member> {
           result.maritalStatusInfo.replace(serializers.deserialize(value,
               specifiedType: const FullType(MaritalStatus)) as MaritalStatus);
           break;
+        case 'createdAt':
+          result.createdAt = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'updatedAt':
+          result.updatedAt = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
       }
     }
 
@@ -162,6 +195,10 @@ class _$Member extends Member {
   final String passportPhoto;
   @override
   final MaritalStatus maritalStatusInfo;
+  @override
+  final String createdAt;
+  @override
+  final String updatedAt;
 
   factory _$Member([void updates(MemberBuilder b)]) =>
       (new MemberBuilder()..update(updates)).build();
@@ -178,7 +215,9 @@ class _$Member extends Member {
       this.kraPin,
       this.gender,
       this.passportPhoto,
-      this.maritalStatusInfo})
+      this.maritalStatusInfo,
+      this.createdAt,
+      this.updatedAt})
       : super._() {
     if (memberId == null) {
       throw new BuiltValueNullFieldError('Member', 'memberId');
@@ -192,29 +231,17 @@ class _$Member extends Member {
     if (lastName == null) {
       throw new BuiltValueNullFieldError('Member', 'lastName');
     }
-    if (otherName == null) {
-      throw new BuiltValueNullFieldError('Member', 'otherName');
-    }
     if (dateOfBirth == null) {
       throw new BuiltValueNullFieldError('Member', 'dateOfBirth');
     }
     if (phoneNumber == null) {
       throw new BuiltValueNullFieldError('Member', 'phoneNumber');
     }
-    if (email == null) {
-      throw new BuiltValueNullFieldError('Member', 'email');
-    }
-    if (kraPin == null) {
-      throw new BuiltValueNullFieldError('Member', 'kraPin');
-    }
-    if (gender == null) {
-      throw new BuiltValueNullFieldError('Member', 'gender');
-    }
-    if (passportPhoto == null) {
-      throw new BuiltValueNullFieldError('Member', 'passportPhoto');
-    }
     if (maritalStatusInfo == null) {
       throw new BuiltValueNullFieldError('Member', 'maritalStatusInfo');
+    }
+    if (createdAt == null) {
+      throw new BuiltValueNullFieldError('Member', 'createdAt');
     }
   }
 
@@ -240,7 +267,9 @@ class _$Member extends Member {
         kraPin == other.kraPin &&
         gender == other.gender &&
         passportPhoto == other.passportPhoto &&
-        maritalStatusInfo == other.maritalStatusInfo;
+        maritalStatusInfo == other.maritalStatusInfo &&
+        createdAt == other.createdAt &&
+        updatedAt == other.updatedAt;
   }
 
   @override
@@ -255,18 +284,25 @@ class _$Member extends Member {
                                 $jc(
                                     $jc(
                                         $jc(
-                                            $jc($jc(0, memberId.hashCode),
-                                                identificationNumber.hashCode),
-                                            firstName.hashCode),
-                                        lastName.hashCode),
-                                    otherName.hashCode),
-                                dateOfBirth.hashCode),
-                            phoneNumber.hashCode),
-                        email.hashCode),
-                    kraPin.hashCode),
-                gender.hashCode),
-            passportPhoto.hashCode),
-        maritalStatusInfo.hashCode));
+                                            $jc(
+                                                $jc(
+                                                    $jc(
+                                                        $jc(0,
+                                                            memberId.hashCode),
+                                                        identificationNumber
+                                                            .hashCode),
+                                                    firstName.hashCode),
+                                                lastName.hashCode),
+                                            otherName.hashCode),
+                                        dateOfBirth.hashCode),
+                                    phoneNumber.hashCode),
+                                email.hashCode),
+                            kraPin.hashCode),
+                        gender.hashCode),
+                    passportPhoto.hashCode),
+                maritalStatusInfo.hashCode),
+            createdAt.hashCode),
+        updatedAt.hashCode));
   }
 
   @override
@@ -283,7 +319,9 @@ class _$Member extends Member {
           ..add('kraPin', kraPin)
           ..add('gender', gender)
           ..add('passportPhoto', passportPhoto)
-          ..add('maritalStatusInfo', maritalStatusInfo))
+          ..add('maritalStatusInfo', maritalStatusInfo)
+          ..add('createdAt', createdAt)
+          ..add('updatedAt', updatedAt))
         .toString();
   }
 }
@@ -343,6 +381,14 @@ class MemberBuilder implements Builder<Member, MemberBuilder> {
   set maritalStatusInfo(MaritalStatusBuilder maritalStatusInfo) =>
       _$this._maritalStatusInfo = maritalStatusInfo;
 
+  String _createdAt;
+  String get createdAt => _$this._createdAt;
+  set createdAt(String createdAt) => _$this._createdAt = createdAt;
+
+  String _updatedAt;
+  String get updatedAt => _$this._updatedAt;
+  set updatedAt(String updatedAt) => _$this._updatedAt = updatedAt;
+
   MemberBuilder();
 
   MemberBuilder get _$this {
@@ -359,6 +405,8 @@ class MemberBuilder implements Builder<Member, MemberBuilder> {
       _gender = _$v.gender;
       _passportPhoto = _$v.passportPhoto;
       _maritalStatusInfo = _$v.maritalStatusInfo?.toBuilder();
+      _createdAt = _$v.createdAt;
+      _updatedAt = _$v.updatedAt;
       _$v = null;
     }
     return this;
@@ -394,7 +442,9 @@ class MemberBuilder implements Builder<Member, MemberBuilder> {
               kraPin: kraPin,
               gender: gender,
               passportPhoto: passportPhoto,
-              maritalStatusInfo: maritalStatusInfo.build());
+              maritalStatusInfo: maritalStatusInfo.build(),
+              createdAt: createdAt,
+              updatedAt: updatedAt);
     } catch (_) {
       String _$failedField;
       try {

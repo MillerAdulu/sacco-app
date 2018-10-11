@@ -44,10 +44,13 @@ class _$ConstituencySerializer implements StructuredSerializer<Constituency> {
       'createdAt',
       serializers.serialize(object.createdAt,
           specifiedType: const FullType(String)),
-      'updatedAt',
-      serializers.serialize(object.updatedAt,
-          specifiedType: const FullType(String)),
     ];
+    if (object.updatedAt != null) {
+      result
+        ..add('updatedAt')
+        ..add(serializers.serialize(object.updatedAt,
+            specifiedType: const FullType(String)));
+    }
 
     return result;
   }
@@ -123,9 +126,6 @@ class _$Constituency extends Constituency {
     }
     if (createdAt == null) {
       throw new BuiltValueNullFieldError('Constituency', 'createdAt');
-    }
-    if (updatedAt == null) {
-      throw new BuiltValueNullFieldError('Constituency', 'updatedAt');
     }
   }
 

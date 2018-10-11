@@ -35,16 +35,22 @@ class _$MaritalStatusSerializer implements StructuredSerializer<MaritalStatus> {
       'maritalStatusId',
       serializers.serialize(object.maritalStatusId,
           specifiedType: const FullType(int)),
-      'maritalStatus',
-      serializers.serialize(object.maritalStatus,
-          specifiedType: const FullType(String)),
       'createdAt',
       serializers.serialize(object.createdAt,
           specifiedType: const FullType(String)),
-      'updatedAt',
-      serializers.serialize(object.updatedAt,
-          specifiedType: const FullType(String)),
     ];
+    if (object.maritalStatus != null) {
+      result
+        ..add('maritalStatus')
+        ..add(serializers.serialize(object.maritalStatus,
+            specifiedType: const FullType(String)));
+    }
+    if (object.updatedAt != null) {
+      result
+        ..add('updatedAt')
+        ..add(serializers.serialize(object.updatedAt,
+            specifiedType: const FullType(String)));
+    }
 
     return result;
   }
@@ -105,14 +111,8 @@ class _$MaritalStatus extends MaritalStatus {
     if (maritalStatusId == null) {
       throw new BuiltValueNullFieldError('MaritalStatus', 'maritalStatusId');
     }
-    if (maritalStatus == null) {
-      throw new BuiltValueNullFieldError('MaritalStatus', 'maritalStatus');
-    }
     if (createdAt == null) {
       throw new BuiltValueNullFieldError('MaritalStatus', 'createdAt');
-    }
-    if (updatedAt == null) {
-      throw new BuiltValueNullFieldError('MaritalStatus', 'updatedAt');
     }
   }
 

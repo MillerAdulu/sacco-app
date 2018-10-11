@@ -12,6 +12,7 @@ abstract class Constituency implements Built<Constituency, ConstituencyBuilder> 
   County get county;
   String get constituencyName;
   String get createdAt;
+  @nullable
   String get updatedAt;
 
   Constituency._();

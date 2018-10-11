@@ -12,6 +12,7 @@ abstract class Locality implements Built<Locality, LocalityBuilder> {
   Constituency get constituency;
   String get localityName;
   String get createdAt;
+  @nullable
   String get updatedAt;
 
   Locality._();
