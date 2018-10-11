@@ -2,17 +2,21 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'dart:io';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class NetworkUtil {
-  //Make NetworkUtil a singleton
+  
   static NetworkUtil _instance = new NetworkUtil.internal();
   NetworkUtil.internal();
   factory NetworkUtil() => _instance;
 
+  String bearerToken;
+
   Future<dynamic> get(String url) {
+    getToken();
     return http.get(url, headers: {
       HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded',
-      HttpHeaders.authorizationHeader: 'Bearer',
+      HttpHeaders.authorizationHeader: 'Bearer $bearerToken',
       HttpHeaders.acceptHeader: 'application/json'
     }).then((http.Response response) {
       final String res = response.body;
@@ -29,13 +33,14 @@ class NetworkUtil {
   }
 
   Future<dynamic> post(String url, {Map body, encoding}) {
+    getToken();
     return http
         .post(url,
             body: body,
             headers: {
               HttpHeaders.contentTypeHeader:
                   'application/x-www-form-urlencoded',
-              HttpHeaders.authorizationHeader: 'Bearer',
+              HttpHeaders.authorizationHeader: 'Bearer $bearerToken',
               HttpHeaders.acceptHeader: 'application/json'
             },
             encoding: encoding)
@@ -51,5 +56,10 @@ class NetworkUtil {
 
       return json.decode(res);
     });
+  }
+
+  getToken() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bearerToken = prefs.getString('bearerToken');
   }
 }
