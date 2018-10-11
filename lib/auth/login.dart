@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:validate/validate.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:async';
 
-class Login extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(padding: new EdgeInsets.all(20.0), child: LoginForm());
-  }
-}
+import 'package:sedcapp/utils/api.dart';
+import 'package:sedcapp/models/member/user.dart';
 
-class LoginForm extends StatefulWidget {
+class Login extends StatefulWidget {
   @override
-  LoginFormState createState() {
-    return LoginFormState();
-  }
+  LoginFormState createState() => LoginFormState();
 }
 
 class _LoginData {
@@ -20,8 +16,10 @@ class _LoginData {
   String password = '';
 }
 
-class LoginFormState extends State<LoginForm> {
+class LoginFormState extends State<Login> {
+  bool _logginIn = false;
   final _loginFormKey = GlobalKey<FormState>();
+  SharedPreferences prefs;
 
   _LoginData _credentials = new _LoginData();
 
@@ -58,16 +56,45 @@ class LoginFormState extends State<LoginForm> {
                   'Login',
                   style: new TextStyle(color: Colors.white),
                 ),
-              ))
+              )),
         ]));
   }
 
   void _login() {
     if (_loginFormKey.currentState.validate()) {
       _loginFormKey.currentState.save();
-      
-      Navigator.pushNamed(context, '/home');
+
+      SaccoAPI api = new SaccoAPI();
+      api.login(_credentials.email, _credentials.password).then((loggedInUser) {
+        if (loggedInUser is User) {
+          saveUserData(loggedInUser);
+          Navigator.pushNamed(context, '/home');
+        } else {
+          Scaffold.of(context).showSnackBar(new SnackBar(
+            content:
+                const Text('Unable to log you in. Please recheck your credentials.'),
+          ));
+          return null;
+        }
+      });
     }
+  }
+
+  saveUserData(loggedInUser) async {
+    prefs = await SharedPreferences.getInstance();
+    setState(() {
+      prefs.setInt('memberId', loggedInUser.member.memberId);
+      prefs.setString('email', loggedInUser.member.email);
+      prefs.setString('phoneNumber', loggedInUser.member.phoneNumber);
+      prefs.setString('accessToken', loggedInUser.token);
+      prefs.setString('identificationNumber', loggedInUser.member.identificationNumber);
+      prefs.setBool('gender', loggedInUser.member.gender);
+      prefs.setString('profilePhoto', loggedInUser.member.passportPhoto);
+      prefs.setString('dateOfBirth', loggedInUser.member.dateOfBirth);
+      prefs.setString('firstName', loggedInUser.member.firstName);
+      prefs.setString('lastName', loggedInUser.member.lastName);
+      prefs.setString('memberSince', loggedInUser.member.createdAt);
+    });
   }
 
   String _validateEmail(String value) {
@@ -83,7 +110,6 @@ class LoginFormState extends State<LoginForm> {
     if (value.length < 4) {
       return 'The pin must be at least 4 digits';
     }
-
     return null;
   }
 }

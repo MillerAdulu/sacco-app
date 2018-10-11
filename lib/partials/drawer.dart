@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 import 'package:sedcapp/user/addresses.dart';
 import 'package:sedcapp/user/dashboard.dart';
@@ -6,20 +8,42 @@ import 'package:sedcapp/user/deposits.dart';
 import 'package:sedcapp/user/loans.dart';
 import 'package:sedcapp/user/paymentmethods.dart';
 
+class SaccoDrawer extends StatefulWidget {
+  @override
+  _SaccoDrawerState createState() => _SaccoDrawerState();
+}
 
-class SaccoDrawer extends StatelessWidget {
+class _SaccoDrawerState extends State<SaccoDrawer> {
+  String firstName, lastName, email, phoneNumber, passportPhoto;
+
+  @override
+  void initState() {
+    super.initState();
+    getPreferences();
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Drawer(
         child: new ListView(
       padding: EdgeInsets.zero,
       children: <Widget>[
-        DrawerHeader(child: Text('Name, {{Member ID}}')),
+        DrawerHeader(
+            child: new UserAccountsDrawerHeader(
+          accountName: new Text('$lastName, $firstName'),
+          accountEmail: new Text('$email'),
+          currentAccountPicture: FadeInImage.memoryNetwork(
+            placeholder: kTransparentImage,
+            image: '$passportPhoto',
+          ),
+          margin: EdgeInsets.zero,
+        )),
         ListTile(
           title: Text('Dashboard'),
           onTap: () {
             Navigator.pop(context);
-            Navigator.push(context, new MaterialPageRoute(builder: (ctxt) => Dashboard()));
+            Navigator.push(
+                context, new MaterialPageRoute(builder: (ctxt) => Dashboard()));
           },
           leading: const Icon(Icons.dashboard),
         ),
@@ -27,7 +51,8 @@ class SaccoDrawer extends StatelessWidget {
           title: Text('Deposits'),
           onTap: () {
             Navigator.pop(context);
-            Navigator.push(context, new MaterialPageRoute(builder: (ctxt) => Deposits()));
+            Navigator.push(
+                context, new MaterialPageRoute(builder: (ctxt) => Deposits()));
           },
           leading: const Icon(Icons.monetization_on),
         ),
@@ -35,7 +60,8 @@ class SaccoDrawer extends StatelessWidget {
           title: Text('Loans'),
           onTap: () {
             Navigator.pop(context);
-            Navigator.push(context, new MaterialPageRoute(builder: (ctxt) => Loans()));
+            Navigator.push(
+                context, new MaterialPageRoute(builder: (ctxt) => Loans()));
           },
           leading: const Icon(Icons.assignment_turned_in),
         ),
@@ -43,7 +69,8 @@ class SaccoDrawer extends StatelessWidget {
           title: Text('Addresses'),
           onTap: () {
             Navigator.pop(context);
-            Navigator.push(context, new MaterialPageRoute(builder: (ctxt) => Addresses()));
+            Navigator.push(
+                context, new MaterialPageRoute(builder: (ctxt) => Addresses()));
           },
           leading: const Icon(Icons.place),
         ),
@@ -51,7 +78,8 @@ class SaccoDrawer extends StatelessWidget {
           title: Text('Payment Methods'),
           onTap: () {
             Navigator.pop(context);
-            Navigator.push(context, new MaterialPageRoute(builder: (ctxt) => PaymentMethods()));
+            Navigator.push(context,
+                new MaterialPageRoute(builder: (ctxt) => PaymentMethods()));
           },
           leading: const Icon(Icons.account_balance_wallet),
         ),
@@ -64,5 +92,16 @@ class SaccoDrawer extends StatelessWidget {
         ),
       ],
     ));
+  }
+
+  getPreferences() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      firstName = prefs.getString('firstName');
+      lastName = prefs.getString('lastName');
+      email = prefs.getString('email');
+      phoneNumber = prefs.getString('phoneNumber');
+      passportPhoto = prefs.getString('profilePhoto');
+    });
   }
 }
