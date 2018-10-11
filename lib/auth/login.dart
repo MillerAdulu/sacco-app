@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:validate/validate.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:async';
 
 import 'package:sedcapp/utils/api.dart';
 import 'package:sedcapp/models/member/user.dart';
@@ -17,7 +16,6 @@ class _LoginData {
 }
 
 class LoginFormState extends State<Login> {
-  bool _logginIn = false;
   final _loginFormKey = GlobalKey<FormState>();
   SharedPreferences prefs;
 
@@ -63,6 +61,7 @@ class LoginFormState extends State<Login> {
   void _login() {
     if (_loginFormKey.currentState.validate()) {
       _loginFormKey.currentState.save();
+      FocusScope.of(context).requestFocus(new FocusNode());
 
       SaccoAPI api = new SaccoAPI();
       api.login(_credentials.email, _credentials.password).then((loggedInUser) {
@@ -86,7 +85,7 @@ class LoginFormState extends State<Login> {
       prefs.setInt('memberId', loggedInUser.member.memberId);
       prefs.setString('email', loggedInUser.member.email);
       prefs.setString('phoneNumber', loggedInUser.member.phoneNumber);
-      prefs.setString('accessToken', loggedInUser.token);
+      prefs.setString('bearerToken', loggedInUser.token);
       prefs.setString('identificationNumber', loggedInUser.member.identificationNumber);
       prefs.setBool('gender', loggedInUser.member.gender);
       prefs.setString('profilePhoto', loggedInUser.member.passportPhoto);
@@ -111,5 +110,19 @@ class LoginFormState extends State<Login> {
       return 'The pin must be at least 4 digits';
     }
     return null;
+  }
+
+  void _progress() {
+    new Stack(
+        children: [
+          new Opacity(
+            opacity: 0.3,
+            child: const ModalBarrier(dismissible: false, color: Colors.grey),
+          ),
+          new Center(
+            child: new CircularProgressIndicator(),
+          ),
+        ],
+      );
   }
 }
