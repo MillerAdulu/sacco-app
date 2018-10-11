@@ -27,42 +27,45 @@ class LoginFormState extends State<Login> {
 
     return Form(
         key: _loginFormKey,
-        child: new ListView(children: <Widget>[
-          new TextFormField(
-            keyboardType: TextInputType.emailAddress,
-            decoration: new InputDecoration(
-                hintText: 'me@mail.com', labelText: 'E-mail Address'),
-            validator: this._validateEmail,
-            onSaved: (String email) {
-              this._credentials.email = email;
-            },
-          ),
-          new TextFormField(
-            obscureText: true,
-            decoration: new InputDecoration(hintText: 'Pin', labelText: 'Pin'),
-            validator: this._validatePassword,
-            onSaved: (String password) {
-              this._credentials.password = password;
-            },
-          ),
-          new Container(
-              width: screenSize.width,
-              child: new RaisedButton(
-                onPressed: this._login,
-                color: Colors.blue,
-                child: Text(
-                  'Login',
-                  style: new TextStyle(color: Colors.white),
-                ),
-              )),
-        ]));
+        child: Container(
+            padding: new EdgeInsets.all(20.0),
+            child: new ListView(children: <Widget>[
+              new TextFormField(
+                keyboardType: TextInputType.emailAddress,
+                decoration: new InputDecoration(
+                    hintText: 'me@mail.com', labelText: 'E-mail Address'),
+                validator: this._validateEmail,
+                onSaved: (String email) {
+                  this._credentials.email = email;
+                },
+              ),
+              new TextFormField(
+                obscureText: true,
+                decoration:
+                    new InputDecoration(hintText: 'Pin', labelText: 'Pin'),
+                validator: this._validatePassword,
+                onSaved: (String password) {
+                  this._credentials.password = password;
+                },
+              ),
+              new Container(
+                  width: screenSize.width,
+                  child: new RaisedButton(
+                    onPressed: this._login,
+                    color: Colors.blue,
+                    child: Text(
+                      'Login',
+                      style: new TextStyle(color: Colors.white),
+                    ),
+                  )),
+            ])));
   }
 
   void _login() {
     if (_loginFormKey.currentState.validate()) {
       _loginFormKey.currentState.save();
       FocusScope.of(context).requestFocus(new FocusNode());
-
+      
       SaccoAPI api = new SaccoAPI();
       api.login(_credentials.email, _credentials.password).then((loggedInUser) {
         if (loggedInUser is User) {
@@ -70,8 +73,8 @@ class LoginFormState extends State<Login> {
           Navigator.pushNamed(context, '/home');
         } else {
           Scaffold.of(context).showSnackBar(new SnackBar(
-            content:
-                const Text('Unable to log you in. Please recheck your credentials.'),
+            content: const Text(
+                'Unable to log you in. Please recheck your credentials.'),
           ));
           return null;
         }
@@ -86,7 +89,8 @@ class LoginFormState extends State<Login> {
       prefs.setString('email', loggedInUser.member.email);
       prefs.setString('phoneNumber', loggedInUser.member.phoneNumber);
       prefs.setString('bearerToken', loggedInUser.token);
-      prefs.setString('identificationNumber', loggedInUser.member.identificationNumber);
+      prefs.setString(
+          'identificationNumber', loggedInUser.member.identificationNumber);
       prefs.setBool('gender', loggedInUser.member.gender);
       prefs.setString('profilePhoto', loggedInUser.member.passportPhoto);
       prefs.setString('dateOfBirth', loggedInUser.member.dateOfBirth);
@@ -110,19 +114,5 @@ class LoginFormState extends State<Login> {
       return 'The pin must be at least 4 digits';
     }
     return null;
-  }
-
-  void _progress() {
-    new Stack(
-        children: [
-          new Opacity(
-            opacity: 0.3,
-            child: const ModalBarrier(dismissible: false, color: Colors.grey),
-          ),
-          new Center(
-            child: new CircularProgressIndicator(),
-          ),
-        ],
-      );
   }
 }
