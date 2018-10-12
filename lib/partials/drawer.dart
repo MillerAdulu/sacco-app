@@ -6,7 +6,7 @@ import 'package:sedcapp/user/addresses.dart';
 import 'package:sedcapp/user/dashboard.dart';
 import 'package:sedcapp/user/deposits.dart';
 import 'package:sedcapp/user/loans.dart';
-import 'package:sedcapp/user/paymentmethods.dart';
+import 'package:sedcapp/user/paymentdetails.dart';
 
 class SaccoDrawer extends StatefulWidget {
   @override
@@ -75,11 +75,11 @@ class _SaccoDrawerState extends State<SaccoDrawer> {
           leading: const Icon(Icons.place),
         ),
         ListTile(
-          title: Text('Payment Methods'),
+          title: Text('Payment Details'),
           onTap: () {
             Navigator.pop(context);
             Navigator.push(context,
-                new MaterialPageRoute(builder: (ctxt) => PaymentMethods()));
+                new MaterialPageRoute(builder: (ctxt) => PaymentDetails()));
           },
           leading: const Icon(Icons.account_balance_wallet),
         ),

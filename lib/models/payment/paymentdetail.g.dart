@@ -41,25 +41,40 @@ class _$PaymentDetailSerializer implements StructuredSerializer<PaymentDetail> {
       'member',
       serializers.serialize(object.member,
           specifiedType: const FullType(Member)),
-      'bankName',
-      serializers.serialize(object.bankName,
-          specifiedType: const FullType(String)),
-      'bankAccountNumber',
-      serializers.serialize(object.bankAccountNumber,
-          specifiedType: const FullType(String)),
-      'cardNumber',
-      serializers.serialize(object.cardNumber,
-          specifiedType: const FullType(String)),
-      'serviceProvider',
-      serializers.serialize(object.serviceProvider,
-          specifiedType: const FullType(String)),
-      'phoneNumber',
-      serializers.serialize(object.phoneNumber,
-          specifiedType: const FullType(String)),
       'createdAt',
       serializers.serialize(object.createdAt,
           specifiedType: const FullType(String)),
     ];
+    if (object.bankName != null) {
+      result
+        ..add('bankName')
+        ..add(serializers.serialize(object.bankName,
+            specifiedType: const FullType(String)));
+    }
+    if (object.bankAccountNumber != null) {
+      result
+        ..add('bankAccountNumber')
+        ..add(serializers.serialize(object.bankAccountNumber,
+            specifiedType: const FullType(String)));
+    }
+    if (object.cardNumber != null) {
+      result
+        ..add('cardNumber')
+        ..add(serializers.serialize(object.cardNumber,
+            specifiedType: const FullType(String)));
+    }
+    if (object.serviceProvider != null) {
+      result
+        ..add('serviceProvider')
+        ..add(serializers.serialize(object.serviceProvider,
+            specifiedType: const FullType(String)));
+    }
+    if (object.phoneNumber != null) {
+      result
+        ..add('phoneNumber')
+        ..add(serializers.serialize(object.phoneNumber,
+            specifiedType: const FullType(String)));
+    }
     if (object.updatedAt != null) {
       result
         ..add('updatedAt')
@@ -173,21 +188,6 @@ class _$PaymentDetail extends PaymentDetail {
     }
     if (member == null) {
       throw new BuiltValueNullFieldError('PaymentDetail', 'member');
-    }
-    if (bankName == null) {
-      throw new BuiltValueNullFieldError('PaymentDetail', 'bankName');
-    }
-    if (bankAccountNumber == null) {
-      throw new BuiltValueNullFieldError('PaymentDetail', 'bankAccountNumber');
-    }
-    if (cardNumber == null) {
-      throw new BuiltValueNullFieldError('PaymentDetail', 'cardNumber');
-    }
-    if (serviceProvider == null) {
-      throw new BuiltValueNullFieldError('PaymentDetail', 'serviceProvider');
-    }
-    if (phoneNumber == null) {
-      throw new BuiltValueNullFieldError('PaymentDetail', 'phoneNumber');
     }
     if (createdAt == null) {
       throw new BuiltValueNullFieldError('PaymentDetail', 'createdAt');

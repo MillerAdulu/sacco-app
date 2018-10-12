@@ -13,10 +13,15 @@ abstract class PaymentDetail
   int get paymentDetailsId;
   PaymentMethod get paymentMethod;
   Member get member;
+  @nullable
   String get bankName;
+  @nullable
   String get bankAccountNumber;
+  @nullable
   String get cardNumber;
+  @nullable
   String get serviceProvider;
+  @nullable
   String get phoneNumber;
   String get createdAt;
   @nullable
