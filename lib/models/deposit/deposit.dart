@@ -12,7 +12,8 @@ abstract class Deposit implements Built<Deposit, DepositBuilder> {
   int get memberDepositId;
   Member get member;
   PaymentMethod get paymentMethod;
-  double get depositAmount;
+  String get depositAmount;
+  @nullable
   String get comment;
   String get createdAt;
   @nullable

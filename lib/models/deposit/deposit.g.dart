@@ -42,14 +42,17 @@ class _$DepositSerializer implements StructuredSerializer<Deposit> {
           specifiedType: const FullType(PaymentMethod)),
       'depositAmount',
       serializers.serialize(object.depositAmount,
-          specifiedType: const FullType(double)),
-      'comment',
-      serializers.serialize(object.comment,
           specifiedType: const FullType(String)),
       'createdAt',
       serializers.serialize(object.createdAt,
           specifiedType: const FullType(String)),
     ];
+    if (object.comment != null) {
+      result
+        ..add('comment')
+        ..add(serializers.serialize(object.comment,
+            specifiedType: const FullType(String)));
+    }
     if (object.updatedAt != null) {
       result
         ..add('updatedAt')
@@ -85,7 +88,7 @@ class _$DepositSerializer implements StructuredSerializer<Deposit> {
           break;
         case 'depositAmount':
           result.depositAmount = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'comment':
           result.comment = serializers.deserialize(value,
@@ -114,7 +117,7 @@ class _$Deposit extends Deposit {
   @override
   final PaymentMethod paymentMethod;
   @override
-  final double depositAmount;
+  final String depositAmount;
   @override
   final String comment;
   @override
@@ -145,9 +148,6 @@ class _$Deposit extends Deposit {
     }
     if (depositAmount == null) {
       throw new BuiltValueNullFieldError('Deposit', 'depositAmount');
-    }
-    if (comment == null) {
-      throw new BuiltValueNullFieldError('Deposit', 'comment');
     }
     if (createdAt == null) {
       throw new BuiltValueNullFieldError('Deposit', 'createdAt');
@@ -220,9 +220,9 @@ class DepositBuilder implements Builder<Deposit, DepositBuilder> {
   set paymentMethod(PaymentMethodBuilder paymentMethod) =>
       _$this._paymentMethod = paymentMethod;
 
-  double _depositAmount;
-  double get depositAmount => _$this._depositAmount;
-  set depositAmount(double depositAmount) =>
+  String _depositAmount;
+  String get depositAmount => _$this._depositAmount;
+  set depositAmount(String depositAmount) =>
       _$this._depositAmount = depositAmount;
 
   String _comment;
