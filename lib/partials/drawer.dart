@@ -2,12 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:transparent_image/transparent_image.dart';
 
-import 'package:sedcapp/user/addresses.dart';
-import 'package:sedcapp/user/dashboard.dart';
-import 'package:sedcapp/user/deposits.dart';
-import 'package:sedcapp/user/loans.dart';
-import 'package:sedcapp/user/paymentdetails.dart';
-
 class SaccoDrawer extends StatefulWidget {
   @override
   _SaccoDrawerState createState() => _SaccoDrawerState();
@@ -41,57 +35,53 @@ class _SaccoDrawerState extends State<SaccoDrawer> {
         ListTile(
           title: Text('Dashboard'),
           onTap: () {
-            Navigator.pop(context);
-            Navigator.push(
-                context, new MaterialPageRoute(builder: (context) => Dashboard()));
+            Navigator.pushNamed(context, '/home');
           },
           leading: const Icon(Icons.dashboard),
         ),
         ListTile(
           title: Text('Deposits'),
           onTap: () {
-            Navigator.pop(context);
-            Navigator.push(
-                context, new MaterialPageRoute(builder: (context) => Deposits()));
+            Navigator.pushNamed(context, '/deposits');
           },
           leading: const Icon(Icons.monetization_on),
         ),
         ListTile(
           title: Text('Loans'),
           onTap: () {
-            Navigator.pop(context);
-            Navigator.push(
-                context, new MaterialPageRoute(builder: (context) => Loans()));
+            Navigator.pushNamed(context, '/loans');
           },
           leading: const Icon(Icons.assignment_turned_in),
         ),
         ListTile(
           title: Text('Addresses'),
           onTap: () {
-            Navigator.pop(context);
-            Navigator.push(
-                context, new MaterialPageRoute(builder: (context) => Addresses()));
+            Navigator.pushNamed(context, '/addresses');
           },
           leading: const Icon(Icons.place),
         ),
         ListTile(
           title: Text('Payment Details'),
           onTap: () {
-            Navigator.pop(context);
-            Navigator.push(context,
-                new MaterialPageRoute(builder: (context) => PaymentDetails()));
+            Navigator.pushNamed(context, '/paymentdetails');
           },
           leading: const Icon(Icons.account_balance_wallet),
         ),
         ListTile(
           title: Text('Log Out'),
           onTap: () {
-            Navigator.pop(context);
+            logOut();
+            Navigator.popUntil(context, ModalRoute.withName('/login'));
           },
           leading: const Icon(Icons.power_settings_new),
         ),
       ],
     ));
+  }
+
+  void logOut() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.clear();
   }
 
   getPreferences() async {
