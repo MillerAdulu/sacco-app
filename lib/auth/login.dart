@@ -65,7 +65,7 @@ class LoginFormState extends State<Login> {
     if (_loginFormKey.currentState.validate()) {
       _loginFormKey.currentState.save();
       FocusScope.of(context).requestFocus(new FocusNode());
-      
+
       SaccoAPI api = new SaccoAPI();
       api.login(_credentials.email, _credentials.password).then((loggedInUser) {
         if (loggedInUser is User) {
@@ -84,20 +84,18 @@ class LoginFormState extends State<Login> {
 
   saveUserData(loggedInUser) async {
     prefs = await SharedPreferences.getInstance();
-    setState(() {
-      prefs.setInt('memberId', loggedInUser.member.memberId);
-      prefs.setString('email', loggedInUser.member.email);
-      prefs.setString('phoneNumber', loggedInUser.member.phoneNumber);
-      prefs.setString('bearerToken', loggedInUser.token);
-      prefs.setString(
-          'identificationNumber', loggedInUser.member.identificationNumber);
-      prefs.setBool('gender', loggedInUser.member.gender);
-      prefs.setString('profilePhoto', loggedInUser.member.passportPhoto);
-      prefs.setString('dateOfBirth', loggedInUser.member.dateOfBirth);
-      prefs.setString('firstName', loggedInUser.member.firstName);
-      prefs.setString('lastName', loggedInUser.member.lastName);
-      prefs.setString('memberSince', loggedInUser.member.createdAt);
-    });
+    prefs.setInt('memberId', loggedInUser.member.memberId);
+    prefs.setString('email', loggedInUser.member.email);
+    prefs.setString('phoneNumber', loggedInUser.member.phoneNumber);
+    prefs.setString('bearerToken', loggedInUser.token);
+    prefs.setString(
+        'identificationNumber', loggedInUser.member.identificationNumber);
+    prefs.setBool('gender', loggedInUser.member.gender);
+    prefs.setString('profilePhoto', loggedInUser.member.passportPhoto);
+    prefs.setString('dateOfBirth', loggedInUser.member.dateOfBirth);
+    prefs.setString('firstName', loggedInUser.member.firstName);
+    prefs.setString('lastName', loggedInUser.member.lastName);
+    prefs.setString('memberSince', loggedInUser.member.createdAt);
   }
 
   String _validateEmail(String value) {

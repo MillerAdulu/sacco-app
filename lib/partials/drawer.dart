@@ -43,7 +43,7 @@ class _SaccoDrawerState extends State<SaccoDrawer> {
           onTap: () {
             Navigator.pop(context);
             Navigator.push(
-                context, new MaterialPageRoute(builder: (ctxt) => Dashboard()));
+                context, new MaterialPageRoute(builder: (context) => Dashboard()));
           },
           leading: const Icon(Icons.dashboard),
         ),
@@ -52,7 +52,7 @@ class _SaccoDrawerState extends State<SaccoDrawer> {
           onTap: () {
             Navigator.pop(context);
             Navigator.push(
-                context, new MaterialPageRoute(builder: (ctxt) => Deposits()));
+                context, new MaterialPageRoute(builder: (context) => Deposits()));
           },
           leading: const Icon(Icons.monetization_on),
         ),
@@ -61,7 +61,7 @@ class _SaccoDrawerState extends State<SaccoDrawer> {
           onTap: () {
             Navigator.pop(context);
             Navigator.push(
-                context, new MaterialPageRoute(builder: (ctxt) => Loans()));
+                context, new MaterialPageRoute(builder: (context) => Loans()));
           },
           leading: const Icon(Icons.assignment_turned_in),
         ),
@@ -70,7 +70,7 @@ class _SaccoDrawerState extends State<SaccoDrawer> {
           onTap: () {
             Navigator.pop(context);
             Navigator.push(
-                context, new MaterialPageRoute(builder: (ctxt) => Addresses()));
+                context, new MaterialPageRoute(builder: (context) => Addresses()));
           },
           leading: const Icon(Icons.place),
         ),
@@ -79,7 +79,7 @@ class _SaccoDrawerState extends State<SaccoDrawer> {
           onTap: () {
             Navigator.pop(context);
             Navigator.push(context,
-                new MaterialPageRoute(builder: (ctxt) => PaymentDetails()));
+                new MaterialPageRoute(builder: (context) => PaymentDetails()));
           },
           leading: const Icon(Icons.account_balance_wallet),
         ),
