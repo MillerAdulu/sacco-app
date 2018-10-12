@@ -17,7 +17,7 @@ abstract class MemberLoan implements Built<MemberLoan, MemberLoanBuilder> {
   String get loanPurpose;
   double get loanAmount;
   String get repaymentPeriod;
-  LoanRepaymentStatus get oanRepaymentStatus;
+  LoanRepaymentStatus get loanRepaymentStatus;
   LoanIssuingStatus get loanIssuingStatus;
   String get createdAt;
   @nullable

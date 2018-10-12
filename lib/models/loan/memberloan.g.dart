@@ -49,8 +49,8 @@ class _$MemberLoanSerializer implements StructuredSerializer<MemberLoan> {
       'repaymentPeriod',
       serializers.serialize(object.repaymentPeriod,
           specifiedType: const FullType(String)),
-      'oanRepaymentStatus',
-      serializers.serialize(object.oanRepaymentStatus,
+      'loanRepaymentStatus',
+      serializers.serialize(object.loanRepaymentStatus,
           specifiedType: const FullType(LoanRepaymentStatus)),
       'loanIssuingStatus',
       serializers.serialize(object.loanIssuingStatus,
@@ -104,8 +104,8 @@ class _$MemberLoanSerializer implements StructuredSerializer<MemberLoan> {
           result.repaymentPeriod = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'oanRepaymentStatus':
-          result.oanRepaymentStatus.replace(serializers.deserialize(value,
+        case 'loanRepaymentStatus':
+          result.loanRepaymentStatus.replace(serializers.deserialize(value,
                   specifiedType: const FullType(LoanRepaymentStatus))
               as LoanRepaymentStatus);
           break;
@@ -143,7 +143,7 @@ class _$MemberLoan extends MemberLoan {
   @override
   final String repaymentPeriod;
   @override
-  final LoanRepaymentStatus oanRepaymentStatus;
+  final LoanRepaymentStatus loanRepaymentStatus;
   @override
   final LoanIssuingStatus loanIssuingStatus;
   @override
@@ -161,7 +161,7 @@ class _$MemberLoan extends MemberLoan {
       this.loanPurpose,
       this.loanAmount,
       this.repaymentPeriod,
-      this.oanRepaymentStatus,
+      this.loanRepaymentStatus,
       this.loanIssuingStatus,
       this.createdAt,
       this.updatedAt})
@@ -184,8 +184,8 @@ class _$MemberLoan extends MemberLoan {
     if (repaymentPeriod == null) {
       throw new BuiltValueNullFieldError('MemberLoan', 'repaymentPeriod');
     }
-    if (oanRepaymentStatus == null) {
-      throw new BuiltValueNullFieldError('MemberLoan', 'oanRepaymentStatus');
+    if (loanRepaymentStatus == null) {
+      throw new BuiltValueNullFieldError('MemberLoan', 'loanRepaymentStatus');
     }
     if (loanIssuingStatus == null) {
       throw new BuiltValueNullFieldError('MemberLoan', 'loanIssuingStatus');
@@ -212,7 +212,7 @@ class _$MemberLoan extends MemberLoan {
         loanPurpose == other.loanPurpose &&
         loanAmount == other.loanAmount &&
         repaymentPeriod == other.repaymentPeriod &&
-        oanRepaymentStatus == other.oanRepaymentStatus &&
+        loanRepaymentStatus == other.loanRepaymentStatus &&
         loanIssuingStatus == other.loanIssuingStatus &&
         createdAt == other.createdAt &&
         updatedAt == other.updatedAt;
@@ -234,7 +234,7 @@ class _$MemberLoan extends MemberLoan {
                                 loanPurpose.hashCode),
                             loanAmount.hashCode),
                         repaymentPeriod.hashCode),
-                    oanRepaymentStatus.hashCode),
+                    loanRepaymentStatus.hashCode),
                 loanIssuingStatus.hashCode),
             createdAt.hashCode),
         updatedAt.hashCode));
@@ -249,7 +249,7 @@ class _$MemberLoan extends MemberLoan {
           ..add('loanPurpose', loanPurpose)
           ..add('loanAmount', loanAmount)
           ..add('repaymentPeriod', repaymentPeriod)
-          ..add('oanRepaymentStatus', oanRepaymentStatus)
+          ..add('loanRepaymentStatus', loanRepaymentStatus)
           ..add('loanIssuingStatus', loanIssuingStatus)
           ..add('createdAt', createdAt)
           ..add('updatedAt', updatedAt))
@@ -285,11 +285,11 @@ class MemberLoanBuilder implements Builder<MemberLoan, MemberLoanBuilder> {
   set repaymentPeriod(String repaymentPeriod) =>
       _$this._repaymentPeriod = repaymentPeriod;
 
-  LoanRepaymentStatusBuilder _oanRepaymentStatus;
-  LoanRepaymentStatusBuilder get oanRepaymentStatus =>
-      _$this._oanRepaymentStatus ??= new LoanRepaymentStatusBuilder();
-  set oanRepaymentStatus(LoanRepaymentStatusBuilder oanRepaymentStatus) =>
-      _$this._oanRepaymentStatus = oanRepaymentStatus;
+  LoanRepaymentStatusBuilder _loanRepaymentStatus;
+  LoanRepaymentStatusBuilder get loanRepaymentStatus =>
+      _$this._loanRepaymentStatus ??= new LoanRepaymentStatusBuilder();
+  set loanRepaymentStatus(LoanRepaymentStatusBuilder loanRepaymentStatus) =>
+      _$this._loanRepaymentStatus = loanRepaymentStatus;
 
   LoanIssuingStatusBuilder _loanIssuingStatus;
   LoanIssuingStatusBuilder get loanIssuingStatus =>
@@ -315,7 +315,7 @@ class MemberLoanBuilder implements Builder<MemberLoan, MemberLoanBuilder> {
       _loanPurpose = _$v.loanPurpose;
       _loanAmount = _$v.loanAmount;
       _repaymentPeriod = _$v.repaymentPeriod;
-      _oanRepaymentStatus = _$v.oanRepaymentStatus?.toBuilder();
+      _loanRepaymentStatus = _$v.loanRepaymentStatus?.toBuilder();
       _loanIssuingStatus = _$v.loanIssuingStatus?.toBuilder();
       _createdAt = _$v.createdAt;
       _updatedAt = _$v.updatedAt;
@@ -349,7 +349,7 @@ class MemberLoanBuilder implements Builder<MemberLoan, MemberLoanBuilder> {
               loanPurpose: loanPurpose,
               loanAmount: loanAmount,
               repaymentPeriod: repaymentPeriod,
-              oanRepaymentStatus: oanRepaymentStatus.build(),
+              loanRepaymentStatus: loanRepaymentStatus.build(),
               loanIssuingStatus: loanIssuingStatus.build(),
               createdAt: createdAt,
               updatedAt: updatedAt);
@@ -361,8 +361,8 @@ class MemberLoanBuilder implements Builder<MemberLoan, MemberLoanBuilder> {
         _$failedField = 'loanType';
         loanType.build();
 
-        _$failedField = 'oanRepaymentStatus';
-        oanRepaymentStatus.build();
+        _$failedField = 'loanRepaymentStatus';
+        loanRepaymentStatus.build();
         _$failedField = 'loanIssuingStatus';
         loanIssuingStatus.build();
       } catch (e) {
