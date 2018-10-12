@@ -5,7 +5,8 @@ import 'package:built_value/serializer.dart';
 
 part 'paymentmethod.g.dart';
 
-abstract class PaymentMethod implements Built<PaymentMethod, PaymentMethodBuilder> {
+abstract class PaymentMethod
+    implements Built<PaymentMethod, PaymentMethodBuilder> {
   int get paymentMethodId;
   String get paymentMethod;
   String get createdAt;
@@ -13,6 +14,7 @@ abstract class PaymentMethod implements Built<PaymentMethod, PaymentMethodBuilde
   String get updatedAt;
 
   PaymentMethod._();
-  factory PaymentMethod([updates(PaymentMethodBuilder paymentMethodBuilder)]) = _$PaymentMethod;
+  factory PaymentMethod([updates(PaymentMethodBuilder paymentMethodBuilder)]) =
+      _$PaymentMethod;
   static Serializer<PaymentMethod> get serializer => _$paymentMethodSerializer;
 }

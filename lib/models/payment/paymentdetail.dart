@@ -8,7 +8,8 @@ import 'paymentmethod.dart';
 
 part 'paymentdetail.g.dart';
 
-abstract class PaymentDetail implements Built<PaymentDetail, PaymentDetailBuilder> {
+abstract class PaymentDetail
+    implements Built<PaymentDetail, PaymentDetailBuilder> {
   int get paymentDetailsId;
   PaymentMethod get paymentMethod;
   Member get member;
@@ -22,6 +23,7 @@ abstract class PaymentDetail implements Built<PaymentDetail, PaymentDetailBuilde
   String get updatedAt;
 
   PaymentDetail._();
-  factory PaymentDetail([updates(PaymentDetailBuilder paymentDetailsBuilder)]) = _$PaymentDetail;
+  factory PaymentDetail([updates(PaymentDetailBuilder paymentDetailsBuilder)]) =
+      _$PaymentDetail;
   static Serializer<PaymentDetail> get serializer => _$paymentDetailSerializer;
 }

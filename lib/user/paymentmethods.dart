@@ -10,9 +10,7 @@ class PaymentMethods extends StatelessWidget {
         title: Text('Payment Methods'),
       ),
       drawer: SaccoDrawer(),
-      body: Center(
-        child: Text('Payment Methods')
-      ),
+      body: Center(child: Text('Payment Methods')),
     );
   }
 }

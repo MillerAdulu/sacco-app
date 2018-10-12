@@ -11,7 +11,7 @@ class Deposits extends StatefulWidget {
 
 class DepositScreen extends State<Deposits> {
   final SaccoAPI api = new SaccoAPI();
-  
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(

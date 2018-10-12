@@ -24,6 +24,7 @@ abstract class MemberLoan implements Built<MemberLoan, MemberLoanBuilder> {
   String get updatedAt;
 
   MemberLoan._();
-  factory MemberLoan([updates(MemberLoanBuilder depositBuilder)]) = _$MemberLoan;
+  factory MemberLoan([updates(MemberLoanBuilder depositBuilder)]) =
+      _$MemberLoan;
   static Serializer<MemberLoan> get serializer => _$memberLoanSerializer;
 }

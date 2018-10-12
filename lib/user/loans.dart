@@ -10,9 +10,7 @@ class Loans extends StatelessWidget {
         title: Text('Loans'),
       ),
       drawer: SaccoDrawer(),
-      body: Center(
-        child: Text('Loans')
-      ),
+      body: Center(child: Text('Loans')),
     );
   }
 }

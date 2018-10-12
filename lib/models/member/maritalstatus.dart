@@ -5,7 +5,8 @@ import 'package:built_value/serializer.dart';
 
 part 'maritalstatus.g.dart';
 
-abstract class MaritalStatus implements Built<MaritalStatus, MaritalStatusBuilder> {
+abstract class MaritalStatus
+    implements Built<MaritalStatus, MaritalStatusBuilder> {
   int get maritalStatusId;
   @nullable
   String get maritalStatus;
@@ -14,6 +15,7 @@ abstract class MaritalStatus implements Built<MaritalStatus, MaritalStatusBuilde
   String get updatedAt;
 
   MaritalStatus._();
-  factory MaritalStatus([updates(MaritalStatusBuilder maritalStatusBuilder)]) = _$MaritalStatus;
+  factory MaritalStatus([updates(MaritalStatusBuilder maritalStatusBuilder)]) =
+      _$MaritalStatus;
   static Serializer<MaritalStatus> get serializer => _$maritalStatusSerializer;
 }

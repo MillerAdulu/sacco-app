@@ -14,6 +14,7 @@ abstract class PostOffice implements Built<PostOffice, PostOfficeBuilder> {
   String get updatedAt;
 
   PostOffice._();
-  factory PostOffice([updates(PostOfficeBuilder depositBuilder)]) = _$PostOffice;
+  factory PostOffice([updates(PostOfficeBuilder depositBuilder)]) =
+      _$PostOffice;
   static Serializer<PostOffice> get serializer => _$postOfficeSerializer;
 }

@@ -7,9 +7,7 @@ class Dashboard extends StatelessWidget {
     return new Scaffold(
       appBar: AppBar(title: Text('Sacco')),
       drawer: SaccoDrawer(),
-      body: Center(
-        child: Text('Dashboard')
-      ),
+      body: Center(child: Text('Dashboard')),
     );
   }
 }

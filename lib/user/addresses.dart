@@ -33,7 +33,8 @@ class AddressesScreen extends State<Addresses> {
                         children: <Widget>[
                           ListTile(
                             leading: Icon(Icons.place),
-                            title: Text('${snapshot.data[index].locality.localityName}'),
+                            title: Text(
+                                '${snapshot.data[index].locality.localityName}'),
                             subtitle: Text(
                                 '${snapshot.data[index].constituency.constituencyName}, ${snapshot.data[index].county.countyName}'),
                           ),
