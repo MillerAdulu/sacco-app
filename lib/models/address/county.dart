@@ -6,8 +6,8 @@ import 'package:built_value/serializer.dart';
 part 'county.g.dart';
 
 abstract class County implements Built<County, CountyBuilder> {
-  int get localityId;
-  String get localityName;
+  int get countyId;
+  String get countyName;
   String get createdAt;
   @nullable
   String get updatedAt;

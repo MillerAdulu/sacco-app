@@ -7,13 +7,18 @@ import 'county.dart';
 import 'constituency.dart';
 import 'locality.dart';
 import 'postoffice.dart';
+import 'package:sedcapp/models/member/member.dart';
 
 part 'address.g.dart';
 
 abstract class Address implements Built<Address, AddressBuilder> {
+  @nullable
   int get addressDetailId;
-  int get memberId;
+  @nullable
+  Member get member;
+  @nullable
   int get businessId;
+  @nullable
   int get employerId;
   County get county;
   Constituency get constituency;

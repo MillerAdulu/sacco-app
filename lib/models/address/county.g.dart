@@ -31,11 +31,11 @@ class _$CountySerializer implements StructuredSerializer<County> {
   Iterable serialize(Serializers serializers, County object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'localityId',
-      serializers.serialize(object.localityId,
+      'countyId',
+      serializers.serialize(object.countyId,
           specifiedType: const FullType(int)),
-      'localityName',
-      serializers.serialize(object.localityName,
+      'countyName',
+      serializers.serialize(object.countyName,
           specifiedType: const FullType(String)),
       'createdAt',
       serializers.serialize(object.createdAt,
@@ -62,12 +62,12 @@ class _$CountySerializer implements StructuredSerializer<County> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'localityId':
-          result.localityId = serializers.deserialize(value,
+        case 'countyId':
+          result.countyId = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
-        case 'localityName':
-          result.localityName = serializers.deserialize(value,
+        case 'countyName':
+          result.countyName = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'createdAt':
@@ -87,9 +87,9 @@ class _$CountySerializer implements StructuredSerializer<County> {
 
 class _$County extends County {
   @override
-  final int localityId;
+  final int countyId;
   @override
-  final String localityName;
+  final String countyName;
   @override
   final String createdAt;
   @override
@@ -98,14 +98,13 @@ class _$County extends County {
   factory _$County([void updates(CountyBuilder b)]) =>
       (new CountyBuilder()..update(updates)).build();
 
-  _$County._(
-      {this.localityId, this.localityName, this.createdAt, this.updatedAt})
+  _$County._({this.countyId, this.countyName, this.createdAt, this.updatedAt})
       : super._() {
-    if (localityId == null) {
-      throw new BuiltValueNullFieldError('County', 'localityId');
+    if (countyId == null) {
+      throw new BuiltValueNullFieldError('County', 'countyId');
     }
-    if (localityName == null) {
-      throw new BuiltValueNullFieldError('County', 'localityName');
+    if (countyName == null) {
+      throw new BuiltValueNullFieldError('County', 'countyName');
     }
     if (createdAt == null) {
       throw new BuiltValueNullFieldError('County', 'createdAt');
@@ -123,8 +122,8 @@ class _$County extends County {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is County &&
-        localityId == other.localityId &&
-        localityName == other.localityName &&
+        countyId == other.countyId &&
+        countyName == other.countyName &&
         createdAt == other.createdAt &&
         updatedAt == other.updatedAt;
   }
@@ -132,7 +131,7 @@ class _$County extends County {
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, localityId.hashCode), localityName.hashCode),
+        $jc($jc($jc(0, countyId.hashCode), countyName.hashCode),
             createdAt.hashCode),
         updatedAt.hashCode));
   }
@@ -140,8 +139,8 @@ class _$County extends County {
   @override
   String toString() {
     return (newBuiltValueToStringHelper('County')
-          ..add('localityId', localityId)
-          ..add('localityName', localityName)
+          ..add('countyId', countyId)
+          ..add('countyName', countyName)
           ..add('createdAt', createdAt)
           ..add('updatedAt', updatedAt))
         .toString();
@@ -151,13 +150,13 @@ class _$County extends County {
 class CountyBuilder implements Builder<County, CountyBuilder> {
   _$County _$v;
 
-  int _localityId;
-  int get localityId => _$this._localityId;
-  set localityId(int localityId) => _$this._localityId = localityId;
+  int _countyId;
+  int get countyId => _$this._countyId;
+  set countyId(int countyId) => _$this._countyId = countyId;
 
-  String _localityName;
-  String get localityName => _$this._localityName;
-  set localityName(String localityName) => _$this._localityName = localityName;
+  String _countyName;
+  String get countyName => _$this._countyName;
+  set countyName(String countyName) => _$this._countyName = countyName;
 
   String _createdAt;
   String get createdAt => _$this._createdAt;
@@ -171,8 +170,8 @@ class CountyBuilder implements Builder<County, CountyBuilder> {
 
   CountyBuilder get _$this {
     if (_$v != null) {
-      _localityId = _$v.localityId;
-      _localityName = _$v.localityName;
+      _countyId = _$v.countyId;
+      _countyName = _$v.countyName;
       _createdAt = _$v.createdAt;
       _updatedAt = _$v.updatedAt;
       _$v = null;
@@ -197,8 +196,8 @@ class CountyBuilder implements Builder<County, CountyBuilder> {
   _$County build() {
     final _$result = _$v ??
         new _$County._(
-            localityId: localityId,
-            localityName: localityName,
+            countyId: countyId,
+            countyName: countyName,
             createdAt: createdAt,
             updatedAt: updatedAt);
     replace(_$result);

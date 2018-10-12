@@ -31,18 +31,6 @@ class _$AddressSerializer implements StructuredSerializer<Address> {
   Iterable serialize(Serializers serializers, Address object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'addressDetailId',
-      serializers.serialize(object.addressDetailId,
-          specifiedType: const FullType(int)),
-      'memberId',
-      serializers.serialize(object.memberId,
-          specifiedType: const FullType(int)),
-      'businessId',
-      serializers.serialize(object.businessId,
-          specifiedType: const FullType(int)),
-      'employerId',
-      serializers.serialize(object.employerId,
-          specifiedType: const FullType(int)),
       'county',
       serializers.serialize(object.county,
           specifiedType: const FullType(County)),
@@ -74,6 +62,30 @@ class _$AddressSerializer implements StructuredSerializer<Address> {
       serializers.serialize(object.createdAt,
           specifiedType: const FullType(String)),
     ];
+    if (object.addressDetailId != null) {
+      result
+        ..add('addressDetailId')
+        ..add(serializers.serialize(object.addressDetailId,
+            specifiedType: const FullType(int)));
+    }
+    if (object.member != null) {
+      result
+        ..add('member')
+        ..add(serializers.serialize(object.member,
+            specifiedType: const FullType(Member)));
+    }
+    if (object.businessId != null) {
+      result
+        ..add('businessId')
+        ..add(serializers.serialize(object.businessId,
+            specifiedType: const FullType(int)));
+    }
+    if (object.employerId != null) {
+      result
+        ..add('employerId')
+        ..add(serializers.serialize(object.employerId,
+            specifiedType: const FullType(int)));
+    }
     if (object.updatedAt != null) {
       result
         ..add('updatedAt')
@@ -99,9 +111,9 @@ class _$AddressSerializer implements StructuredSerializer<Address> {
           result.addressDetailId = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
-        case 'memberId':
-          result.memberId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+        case 'member':
+          result.member.replace(serializers.deserialize(value,
+              specifiedType: const FullType(Member)) as Member);
           break;
         case 'businessId':
           result.businessId = serializers.deserialize(value,
@@ -166,7 +178,7 @@ class _$Address extends Address {
   @override
   final int addressDetailId;
   @override
-  final int memberId;
+  final Member member;
   @override
   final int businessId;
   @override
@@ -199,7 +211,7 @@ class _$Address extends Address {
 
   _$Address._(
       {this.addressDetailId,
-      this.memberId,
+      this.member,
       this.businessId,
       this.employerId,
       this.county,
@@ -214,18 +226,6 @@ class _$Address extends Address {
       this.createdAt,
       this.updatedAt})
       : super._() {
-    if (addressDetailId == null) {
-      throw new BuiltValueNullFieldError('Address', 'addressDetailId');
-    }
-    if (memberId == null) {
-      throw new BuiltValueNullFieldError('Address', 'memberId');
-    }
-    if (businessId == null) {
-      throw new BuiltValueNullFieldError('Address', 'businessId');
-    }
-    if (employerId == null) {
-      throw new BuiltValueNullFieldError('Address', 'employerId');
-    }
     if (county == null) {
       throw new BuiltValueNullFieldError('Address', 'county');
     }
@@ -270,7 +270,7 @@ class _$Address extends Address {
     if (identical(other, this)) return true;
     return other is Address &&
         addressDetailId == other.addressDetailId &&
-        memberId == other.memberId &&
+        member == other.member &&
         businessId == other.businessId &&
         employerId == other.employerId &&
         county == other.county &&
@@ -306,7 +306,7 @@ class _$Address extends Address {
                                                                 0,
                                                                 addressDetailId
                                                                     .hashCode),
-                                                            memberId.hashCode),
+                                                            member.hashCode),
                                                         businessId.hashCode),
                                                     employerId.hashCode),
                                                 county.hashCode),
@@ -326,7 +326,7 @@ class _$Address extends Address {
   String toString() {
     return (newBuiltValueToStringHelper('Address')
           ..add('addressDetailId', addressDetailId)
-          ..add('memberId', memberId)
+          ..add('member', member)
           ..add('businessId', businessId)
           ..add('employerId', employerId)
           ..add('county', county)
@@ -352,9 +352,9 @@ class AddressBuilder implements Builder<Address, AddressBuilder> {
   set addressDetailId(int addressDetailId) =>
       _$this._addressDetailId = addressDetailId;
 
-  int _memberId;
-  int get memberId => _$this._memberId;
-  set memberId(int memberId) => _$this._memberId = memberId;
+  MemberBuilder _member;
+  MemberBuilder get member => _$this._member ??= new MemberBuilder();
+  set member(MemberBuilder member) => _$this._member = member;
 
   int _businessId;
   int get businessId => _$this._businessId;
@@ -417,7 +417,7 @@ class AddressBuilder implements Builder<Address, AddressBuilder> {
   AddressBuilder get _$this {
     if (_$v != null) {
       _addressDetailId = _$v.addressDetailId;
-      _memberId = _$v.memberId;
+      _member = _$v.member?.toBuilder();
       _businessId = _$v.businessId;
       _employerId = _$v.employerId;
       _county = _$v.county?.toBuilder();
@@ -456,7 +456,7 @@ class AddressBuilder implements Builder<Address, AddressBuilder> {
       _$result = _$v ??
           new _$Address._(
               addressDetailId: addressDetailId,
-              memberId: memberId,
+              member: _member?.build(),
               businessId: businessId,
               employerId: employerId,
               county: county.build(),
@@ -473,6 +473,9 @@ class AddressBuilder implements Builder<Address, AddressBuilder> {
     } catch (_) {
       String _$failedField;
       try {
+        _$failedField = 'member';
+        _member?.build();
+
         _$failedField = 'county';
         county.build();
         _$failedField = 'constituency';
