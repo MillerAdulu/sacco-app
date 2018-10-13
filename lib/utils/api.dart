@@ -9,11 +9,13 @@ import 'package:sedcapp/models/deposit/deposit.dart';
 import 'package:sedcapp/models/address/address.dart';
 import 'package:sedcapp/models/loan/memberloan.dart';
 import 'package:sedcapp/models/payment/paymentdetail.dart';
+import 'package:sedcapp/models/deposit/mpesastkpushresponse.dart';
 
 class SaccoAPI {
   NetworkUtil _netUtil = new NetworkUtil();
-  static final String baseUrl = "https://sedcapi.herokuapp.com/api";
+  static final String baseUrl = 'https://sedcapi.herokuapp.com/api';
   int memberId;
+  String phoneNumber;
 
   Future<User> login(String username, String password) async {
     final String loginUrl = 'https://sedcapi.herokuapp.com/saccoapp/login';
@@ -25,7 +27,7 @@ class SaccoAPI {
   }
 
   Future<List<Deposit>> fetchDeposits() async {
-    await getMemberId();
+    await getSharedPreferences();
 
     final String depositsUrl = '$baseUrl/memberdeposits/members/$memberId';
 
@@ -39,7 +41,7 @@ class SaccoAPI {
   }
 
   Future<List<Address>> fetchAddresses() async {
-    await getMemberId();
+    await getSharedPreferences();
     final String addressesUrl = '$baseUrl/addressdetails/members/$memberId';
 
     return _netUtil.get(addressesUrl).then((dynamic res) {
@@ -52,7 +54,7 @@ class SaccoAPI {
   }
 
   Future<List<MemberLoan>> fetchLoans() async {
-    await getMemberId();
+    await getSharedPreferences();
     final String memberLoansUrl = '$baseUrl/loans/member/$memberId';
 
     return _netUtil.get(memberLoansUrl).then((dynamic res) {
@@ -65,7 +67,7 @@ class SaccoAPI {
   }
 
   Future<List<PaymentDetail>> fetchPaymentDetails() async {
-    await getMemberId();
+    await getSharedPreferences();
     final String paymentDetails = '$baseUrl/paymentdetails/members/$memberId';
 
     return _netUtil.get(paymentDetails).then((dynamic res) {
@@ -77,8 +79,23 @@ class SaccoAPI {
     });
   }
 
-  getMemberId() async {
+  Future<MpesaSTKResponse> mpesaDeposit(String depositAmount) async {
+    await getSharedPreferences();
+    final String mpesaDepositUrl =
+        '$baseUrl/memberdeposits/account/lipanampesa';
+    return _netUtil.post(mpesaDepositUrl, body: {
+      'member_id': memberId.toString(),
+      'phone_number': phoneNumber,
+      'deposit_amount': depositAmount
+    }).then((dynamic res) {
+      if (res == null) return null;
+      return serializers.deserializeWith(MpesaSTKResponse.serializer, res);
+    });
+  }
+
+  getSharedPreferences() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     memberId = prefs.getInt('memberId');
+    phoneNumber = prefs.getString('phoneNumber');
   }
 }

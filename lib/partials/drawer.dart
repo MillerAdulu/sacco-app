@@ -40,6 +40,13 @@ class _SaccoDrawerState extends State<SaccoDrawer> {
           leading: const Icon(Icons.dashboard),
         ),
         ListTile(
+          title: Text('Add Deposit'),
+          onTap: () {
+            Navigator.pushNamed(context, '/adddeposit');
+          },
+          leading: const Icon(Icons.add),
+        ),
+        ListTile(
           title: Text('Deposits'),
           onTap: () {
             Navigator.pushNamed(context, '/deposits');

@@ -6,6 +6,7 @@ import 'package:sedcapp/user/deposits.dart';
 import 'package:sedcapp/user/addresses.dart';
 import 'package:sedcapp/user/loans.dart';
 import 'package:sedcapp/user/paymentdetails.dart';
+import 'package:sedcapp/user/adddeposit.dart';
 
 
 final routes = <String, WidgetBuilder> {
@@ -14,5 +15,6 @@ final routes = <String, WidgetBuilder> {
   '/deposits': (BuildContext context) => Deposits(),
   '/addresses': (BuildContext context) => Addresses(),
   '/loans': (BuildContext context) => Loans(),
-  '/paymentdetails': (BuildContext context) => PaymentDetails()
+  '/paymentdetails': (BuildContext context) => PaymentDetails(),
+  '/adddeposit': (BuildContext context) => AddDeposit(),
 };
