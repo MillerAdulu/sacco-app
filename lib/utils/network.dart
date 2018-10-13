@@ -21,8 +21,7 @@ class NetworkUtil {
       final String res = response.body;
       final int statusCode = response.statusCode;
 
-      if (statusCode < 200 || statusCode > 400 || json == null) {
-        print(response.reasonPhrase);
+      if (statusCode < 200 || statusCode > 400 || res == null) {
         throw new Exception('Error while fetching data');
       }
 
@@ -48,7 +47,7 @@ class NetworkUtil {
       final String res = response.body;
       final int statusCode = response.statusCode;
 
-      if (statusCode < 200 || statusCode > 400 || json == null) {
+      if (statusCode < 200 || statusCode > 400 || res == null) {
         throw new Exception('Error while fetching data');
       }
 
