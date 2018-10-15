@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:sedcapp/auth/login.dart';
-import 'package:sedcapp/user/dashboard.dart';
-import 'package:sedcapp/user/deposits.dart';
-import 'package:sedcapp/user/addresses.dart';
-import 'package:sedcapp/user/loans.dart';
-import 'package:sedcapp/user/paymentdetails.dart';
-import 'package:sedcapp/user/adddeposit.dart';
+import 'package:sedcapp/screens/dashboard.dart';
+import 'package:sedcapp/screens/deposits.dart';
+import 'package:sedcapp/screens/addresses.dart';
+import 'package:sedcapp/screens/loans.dart';
+import 'package:sedcapp/screens/paymentdetails.dart';
+import 'package:sedcapp/screens/adddeposit.dart';
 
 
 final routes = <String, WidgetBuilder> {
