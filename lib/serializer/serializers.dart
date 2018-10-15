@@ -18,6 +18,7 @@ import 'package:sedcapp/models/address/constituency.dart';
 import 'package:sedcapp/models/address/county.dart';
 import 'package:sedcapp/models/address/address.dart';
 import 'package:sedcapp/models/payment/paymentdetail.dart';
+import 'package:sedcapp/models/deposit/africastalkingmobilecheckout.dart';
 
 part 'serializers.g.dart';
 
@@ -35,7 +36,9 @@ part 'serializers.g.dart';
   Constituency,
   County,
   Address,
-  PaymentDetail
+  PaymentDetail,
+  AfricasTalkingMobileCheckout,
+  AfricasTalkingMobileCheckoutData
 ])
 
 final Serializers serializers = (

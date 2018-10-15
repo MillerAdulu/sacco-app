@@ -21,6 +21,8 @@ part of serializers;
 
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Address.serializer)
+      ..add(AfricasTalkingMobileCheckout.serializer)
+      ..add(AfricasTalkingMobileCheckoutData.serializer)
       ..add(Constituency.serializer)
       ..add(County.serializer)
       ..add(Deposit.serializer)

@@ -9,7 +9,7 @@ import 'package:sedcapp/models/deposit/deposit.dart';
 import 'package:sedcapp/models/address/address.dart';
 import 'package:sedcapp/models/loan/memberloan.dart';
 import 'package:sedcapp/models/payment/paymentdetail.dart';
-import 'package:sedcapp/models/deposit/mpesastkpushresponse.dart';
+import 'package:sedcapp/models/deposit/africastalkingmobilecheckout.dart';
 
 class SaccoAPI {
   NetworkUtil _netUtil = new NetworkUtil();
@@ -79,7 +79,7 @@ class SaccoAPI {
     });
   }
 
-  Future<MpesaSTKResponse> mpesaDeposit(String depositAmount) async {
+  Future<AfricasTalkingMobileCheckout> mpesaDeposit(String depositAmount) async {
     await getSharedPreferences();
     final String mpesaDepositUrl =
         '$baseUrl/memberdeposits/account/lipanampesa';
@@ -88,8 +88,9 @@ class SaccoAPI {
       'phone_number': phoneNumber,
       'deposit_amount': depositAmount
     }).then((dynamic res) {
+      print(res);
       if (res == null) return null;
-      return serializers.deserializeWith(MpesaSTKResponse.serializer, res);
+      return serializers.deserializeWith(AfricasTalkingMobileCheckout.serializer, res);
     });
   }
 

@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:sedcapp/partials/drawer.dart';
 import 'package:sedcapp/utils/api.dart';
-import 'package:sedcapp/models/deposit/mpesastkpushresponse.dart';
+import 'package:sedcapp/models/deposit/africastalkingmobilecheckout.dart';
 
 class AddDeposit extends StatefulWidget {
   @override
@@ -54,8 +54,8 @@ class AddDepositScreen extends State<AddDeposit> {
     if (_addDepositFormKey.currentState.validate()) {
       _addDepositFormKey.currentState.save();
       api.mpesaDeposit(depositAmount).then((result) {
-        if (result is MpesaSTKResponse) {
-          if (result.ResponseCode == 0) {
+        if (result is AfricasTalkingMobileCheckout) {
+          if (result.status == "success") {
             Scaffold.of(context).showSnackBar(SnackBar(
               content: Text('Success! Please wait to enter your pin.'),
               backgroundColor: Colors.greenAccent,
@@ -66,7 +66,7 @@ class AddDepositScreen extends State<AddDeposit> {
             ));
           } else {
             Scaffold.of(context).showSnackBar(SnackBar(
-              content: Text('${result.CustomerMessage}'),
+              content: Text('${result.data.description}'),
               backgroundColor: Colors.greenAccent,
             ));
           }
