@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stream_channel/stream_channel.dart';
 
 import 'package:sedcapp/partials/drawer.dart';
 import 'package:sedcapp/models/deposit/deposit.dart';
@@ -11,6 +12,14 @@ class Deposits extends StatefulWidget {
 
 class DepositScreen extends State<Deposits> {
   final SaccoAPI api = new SaccoAPI();
+  // StreamChannelController<List<Deposit>> depositStreamChannelController = new StreamChannelController();
+
+  @override
+  void initState() {
+    super.initState();
+    print('Creating a deposits stream controller');
+    // depositStreamChannelController.stream.listen();
+  }
 
   @override
   Widget build(BuildContext context) {
