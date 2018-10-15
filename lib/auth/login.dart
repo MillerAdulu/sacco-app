@@ -28,34 +28,34 @@ class LoginFormState extends State<Login> {
     return Form(
         key: _loginFormKey,
         child: Container(
-            padding: new EdgeInsets.all(20.0),
-            child: new ListView(children: <Widget>[
-              new TextFormField(
+            padding: EdgeInsets.all(20.0),
+            child: ListView(children: <Widget>[
+              TextFormField(
                 keyboardType: TextInputType.emailAddress,
-                decoration: new InputDecoration(
+                decoration: InputDecoration(
                     hintText: 'me@mail.com', labelText: 'E-mail Address'),
                 validator: this._validateEmail,
                 onSaved: (String email) {
                   this._credentials.email = email;
                 },
               ),
-              new TextFormField(
+              TextFormField(
                 obscureText: true,
                 decoration:
-                    new InputDecoration(hintText: 'Pin', labelText: 'Pin'),
+                    InputDecoration(hintText: 'Pin', labelText: 'Pin'),
                 validator: this._validatePassword,
                 onSaved: (String password) {
                   this._credentials.password = password;
                 },
               ),
-              new Container(
+              Container(
                   width: screenSize.width,
-                  child: new RaisedButton(
+                  child: RaisedButton(
                     onPressed: this._login,
                     color: Colors.blue,
                     child: Text(
                       'Login',
-                      style: new TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.white),
                     ),
                   )),
             ])));
@@ -64,7 +64,7 @@ class LoginFormState extends State<Login> {
   void _login() {
     if (_loginFormKey.currentState.validate()) {
       _loginFormKey.currentState.save();
-      FocusScope.of(context).requestFocus(new FocusNode());
+      FocusScope.of(context).requestFocus(FocusNode());
 
       SaccoAPI api = new SaccoAPI();
       api.login(_credentials.email, _credentials.password).then((loggedInUser) {
@@ -72,7 +72,7 @@ class LoginFormState extends State<Login> {
           saveUserData(loggedInUser);
           Navigator.pushNamed(context, '/home');
         } else {
-          Scaffold.of(context).showSnackBar(new SnackBar(
+          Scaffold.of(context).showSnackBar(SnackBar(
             content: const Text(
                 'Unable to log you in. Please recheck your credentials.'),
           ));

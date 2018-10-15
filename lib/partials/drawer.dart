@@ -18,14 +18,14 @@ class _SaccoDrawerState extends State<SaccoDrawer> {
 
   @override
   Widget build(BuildContext context) {
-    return new Drawer(
-        child: new ListView(
+    return Drawer(
+        child: ListView(
       padding: EdgeInsets.zero,
       children: <Widget>[
         DrawerHeader(
-            child: new UserAccountsDrawerHeader(
-          accountName: new Text('$lastName, $firstName'),
-          accountEmail: new Text('$email'),
+            child: UserAccountsDrawerHeader(
+          accountName: Text('$lastName, $firstName'),
+          accountEmail: Text('$email'),
           currentAccountPicture: FadeInImage.memoryNetwork(
             placeholder: kTransparentImage,
             image: '$passportPhoto',

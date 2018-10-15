@@ -8,14 +8,14 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
       title: 'Sacco',
       home: Scaffold(
         appBar: AppBar(
           title: Text('Sacco')
         ),
         body: Center(
-          child: new Login()
+          child: Login()
           )
       ),
       routes: routes,
