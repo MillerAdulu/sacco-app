@@ -8,6 +8,7 @@ class SaccoDrawer extends StatefulWidget {
 }
 
 class _SaccoDrawerState extends State<SaccoDrawer> {
+  SharedPreferences prefs;
   String firstName, lastName, email, phoneNumber, passportPhoto;
 
   @override
@@ -78,7 +79,7 @@ class _SaccoDrawerState extends State<SaccoDrawer> {
           title: Text('Log Out'),
           onTap: () {
             logOut();
-            Navigator.pushReplacementNamed(context, '/login');
+            Navigator.pushReplacementNamed(context, '/');
           },
           leading: const Icon(Icons.power_settings_new),
         ),
@@ -87,7 +88,7 @@ class _SaccoDrawerState extends State<SaccoDrawer> {
   }
 
   void logOut() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs = await SharedPreferences.getInstance();
     prefs.clear();
   }
 
