@@ -18,7 +18,7 @@ import 'package:sedcapp/models/address/constituency.dart';
 import 'package:sedcapp/models/address/county.dart';
 import 'package:sedcapp/models/address/address.dart';
 import 'package:sedcapp/models/payment/paymentdetail.dart';
-import 'package:sedcapp/models/deposit/africastalkingmobilecheckout.dart';
+import 'package:sedcapp/models/deposit/mpesastkpushresponse.dart';
 
 part 'serializers.g.dart';
 
@@ -37,8 +37,7 @@ part 'serializers.g.dart';
   County,
   Address,
   PaymentDetail,
-  AfricasTalkingMobileCheckout,
-  AfricasTalkingMobileCheckoutData
+  MpesaSTKResponse,
 ])
 final Serializers serializers =
     (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();
