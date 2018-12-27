@@ -36,6 +36,9 @@ class _$MemberSerializer implements StructuredSerializer<Member> {
       'phoneNumber',
       serializers.serialize(object.phoneNumber,
           specifiedType: const FullType(String)),
+      'maritalStatusInfo',
+      serializers.serialize(object.maritalStatusInfo,
+          specifiedType: const FullType(MaritalStatus)),
       'createdAt',
       serializers.serialize(object.createdAt,
           specifiedType: const FullType(String)),
@@ -69,12 +72,6 @@ class _$MemberSerializer implements StructuredSerializer<Member> {
         ..add('passportPhoto')
         ..add(serializers.serialize(object.passportPhoto,
             specifiedType: const FullType(String)));
-    }
-    if (object.maritalStatusInfo != null) {
-      result
-        ..add('maritalStatusInfo')
-        ..add(serializers.serialize(object.maritalStatusInfo,
-            specifiedType: const FullType(MaritalStatus)));
     }
     if (object.updatedAt != null) {
       result
@@ -226,6 +223,9 @@ class _$Member extends Member {
     }
     if (phoneNumber == null) {
       throw new BuiltValueNullFieldError('Member', 'phoneNumber');
+    }
+    if (maritalStatusInfo == null) {
+      throw new BuiltValueNullFieldError('Member', 'maritalStatusInfo');
     }
     if (createdAt == null) {
       throw new BuiltValueNullFieldError('Member', 'createdAt');
@@ -429,14 +429,14 @@ class MemberBuilder implements Builder<Member, MemberBuilder> {
               kraPin: kraPin,
               gender: gender,
               passportPhoto: passportPhoto,
-              maritalStatusInfo: _maritalStatusInfo?.build(),
+              maritalStatusInfo: maritalStatusInfo.build(),
               createdAt: createdAt,
               updatedAt: updatedAt);
     } catch (_) {
       String _$failedField;
       try {
         _$failedField = 'maritalStatusInfo';
-        _maritalStatusInfo?.build();
+        maritalStatusInfo.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'Member', _$failedField, e.toString());

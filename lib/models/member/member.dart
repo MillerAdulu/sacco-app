@@ -24,7 +24,6 @@ abstract class Member implements Built<Member, MemberBuilder> {
   bool get gender;
   @nullable
   String get passportPhoto;
-  @nullable
   MaritalStatus get maritalStatusInfo;
 
   String get createdAt;
