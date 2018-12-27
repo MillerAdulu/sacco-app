@@ -13,15 +13,25 @@ import 'package:sedcapp/models/deposit/africastalkingmobilecheckout.dart';
 
 class SaccoAPI {
   NetworkUtil _netUtil = new NetworkUtil();
-  static final String baseUrl = 'https://sedcapi.herokuapp.com/api';
+  static final String baseUrl = 'https://apisedc.appspot.com/api';
   int memberId;
   String phoneNumber;
 
   Future<User> login(String username, String password) async {
-    final String loginUrl = 'https://sedcapi.herokuapp.com/saccoapp/login';
-    return _netUtil.post(loginUrl,
-        body: {'username': username, 'password': password}).then((dynamic res) {
-      if (res == null) return null;
+    final String loginUrl = 'https://apisedc.appspot.com/oauth/token';
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    _netUtil.post(loginUrl, body: {
+      'grant_type': 'password',
+      'client_id': '2',
+      'client_secret': 'hxHuyF3dT62IFJbfTMHGczlYCKOuzySYYnrey1CS',
+      'username': username,
+      'password': password,
+      'scope': '*'
+    }).then((dynamic res) {
+      prefs.setString('bearerToken', res['access_token']);
+    });
+
+    return _netUtil.get('$baseUrl/user').then((dynamic res) {
       return serializers.deserializeWith(User.serializer, res);
     });
   }
@@ -79,7 +89,8 @@ class SaccoAPI {
     });
   }
 
-  Future<AfricasTalkingMobileCheckout> mpesaDeposit(String depositAmount) async {
+  Future<AfricasTalkingMobileCheckout> mpesaDeposit(
+      String depositAmount) async {
     await getSharedPreferences();
     final String mpesaDepositUrl =
         '$baseUrl/memberdeposits/account/lipanampesa';
@@ -90,7 +101,8 @@ class SaccoAPI {
     }).then((dynamic res) {
       print(res);
       if (res == null) return null;
-      return serializers.deserializeWith(AfricasTalkingMobileCheckout.serializer, res);
+      return serializers.deserializeWith(
+          AfricasTalkingMobileCheckout.serializer, res);
     });
   }
 

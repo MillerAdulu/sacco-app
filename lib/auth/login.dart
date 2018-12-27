@@ -87,7 +87,6 @@ class LoginFormState extends State<Login> {
     prefs.setInt('memberId', loggedInUser.member.memberId);
     prefs.setString('email', loggedInUser.member.email);
     prefs.setString('phoneNumber', loggedInUser.member.phoneNumber);
-    prefs.setString('bearerToken', loggedInUser.token);
     prefs.setString(
         'identificationNumber', loggedInUser.member.identificationNumber);
     prefs.setBool('gender', loggedInUser.member.gender);

@@ -78,7 +78,7 @@ class _SaccoDrawerState extends State<SaccoDrawer> {
           title: Text('Log Out'),
           onTap: () {
             logOut();
-            Navigator.popUntil(context, ModalRoute.withName('/login'));
+            Navigator.pushReplacementNamed(context, '/login');
           },
           leading: const Icon(Icons.power_settings_new),
         ),

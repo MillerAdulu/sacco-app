@@ -13,7 +13,6 @@ abstract class User implements Built<User, UserBuilder> {
   String get email;
   String get phoneNumber;
   String get accessLevel;
-  String get token;
   @nullable
   Member get member;
   String get createdAt;

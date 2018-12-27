@@ -6,19 +6,6 @@ part of user;
 // BuiltValueGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line
-// ignore_for_file: annotate_overrides
-// ignore_for_file: avoid_annotating_with_dynamic
-// ignore_for_file: avoid_catches_without_on_clauses
-// ignore_for_file: avoid_returning_this
-// ignore_for_file: lines_longer_than_80_chars
-// ignore_for_file: omit_local_variable_types
-// ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: sort_constructors_first
-// ignore_for_file: unnecessary_const
-// ignore_for_file: unnecessary_new
-// ignore_for_file: test_types_in_equals
-
 Serializer<User> _$userSerializer = new _$UserSerializer();
 
 class _$UserSerializer implements StructuredSerializer<User> {
@@ -44,9 +31,6 @@ class _$UserSerializer implements StructuredSerializer<User> {
           specifiedType: const FullType(String)),
       'accessLevel',
       serializers.serialize(object.accessLevel,
-          specifiedType: const FullType(String)),
-      'token',
-      serializers.serialize(object.token,
           specifiedType: const FullType(String)),
       'createdAt',
       serializers.serialize(object.createdAt,
@@ -99,10 +83,6 @@ class _$UserSerializer implements StructuredSerializer<User> {
           result.accessLevel = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'token':
-          result.token = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
         case 'member':
           result.member.replace(serializers.deserialize(value,
               specifiedType: const FullType(Member)) as Member);
@@ -134,8 +114,6 @@ class _$User extends User {
   @override
   final String accessLevel;
   @override
-  final String token;
-  @override
   final Member member;
   @override
   final String createdAt;
@@ -151,7 +129,6 @@ class _$User extends User {
       this.email,
       this.phoneNumber,
       this.accessLevel,
-      this.token,
       this.member,
       this.createdAt,
       this.updatedAt})
@@ -170,9 +147,6 @@ class _$User extends User {
     }
     if (accessLevel == null) {
       throw new BuiltValueNullFieldError('User', 'accessLevel');
-    }
-    if (token == null) {
-      throw new BuiltValueNullFieldError('User', 'token');
     }
     if (createdAt == null) {
       throw new BuiltValueNullFieldError('User', 'createdAt');
@@ -195,7 +169,6 @@ class _$User extends User {
         email == other.email &&
         phoneNumber == other.phoneNumber &&
         accessLevel == other.accessLevel &&
-        token == other.token &&
         member == other.member &&
         createdAt == other.createdAt &&
         updatedAt == other.updatedAt;
@@ -208,12 +181,10 @@ class _$User extends User {
             $jc(
                 $jc(
                     $jc(
-                        $jc(
-                            $jc($jc($jc(0, userId.hashCode), userName.hashCode),
-                                email.hashCode),
-                            phoneNumber.hashCode),
-                        accessLevel.hashCode),
-                    token.hashCode),
+                        $jc($jc($jc(0, userId.hashCode), userName.hashCode),
+                            email.hashCode),
+                        phoneNumber.hashCode),
+                    accessLevel.hashCode),
                 member.hashCode),
             createdAt.hashCode),
         updatedAt.hashCode));
@@ -227,7 +198,6 @@ class _$User extends User {
           ..add('email', email)
           ..add('phoneNumber', phoneNumber)
           ..add('accessLevel', accessLevel)
-          ..add('token', token)
           ..add('member', member)
           ..add('createdAt', createdAt)
           ..add('updatedAt', updatedAt))
@@ -258,10 +228,6 @@ class UserBuilder implements Builder<User, UserBuilder> {
   String get accessLevel => _$this._accessLevel;
   set accessLevel(String accessLevel) => _$this._accessLevel = accessLevel;
 
-  String _token;
-  String get token => _$this._token;
-  set token(String token) => _$this._token = token;
-
   MemberBuilder _member;
   MemberBuilder get member => _$this._member ??= new MemberBuilder();
   set member(MemberBuilder member) => _$this._member = member;
@@ -283,7 +249,6 @@ class UserBuilder implements Builder<User, UserBuilder> {
       _email = _$v.email;
       _phoneNumber = _$v.phoneNumber;
       _accessLevel = _$v.accessLevel;
-      _token = _$v.token;
       _member = _$v.member?.toBuilder();
       _createdAt = _$v.createdAt;
       _updatedAt = _$v.updatedAt;
@@ -316,7 +281,6 @@ class UserBuilder implements Builder<User, UserBuilder> {
               email: email,
               phoneNumber: phoneNumber,
               accessLevel: accessLevel,
-              token: token,
               member: _member?.build(),
               createdAt: createdAt,
               updatedAt: updatedAt);
@@ -335,3 +299,5 @@ class UserBuilder implements Builder<User, UserBuilder> {
     return _$result;
   }
 }
+
+// ignore_for_file: always_put_control_body_on_new_line,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
