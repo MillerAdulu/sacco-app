@@ -40,8 +40,5 @@ part 'serializers.g.dart';
   AfricasTalkingMobileCheckout,
   AfricasTalkingMobileCheckoutData
 ])
-
-final Serializers serializers = (
-      _$serializers.toBuilder()
-      ..addPlugin(StandardJsonPlugin())
-    ).build();
+final Serializers serializers =
+    (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

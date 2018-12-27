@@ -8,8 +8,7 @@ import 'package:sedcapp/screens/loans.dart';
 import 'package:sedcapp/screens/paymentdetails.dart';
 import 'package:sedcapp/screens/adddeposit.dart';
 
-
-final routes = <String, WidgetBuilder> {
+final routes = <String, WidgetBuilder>{
   '/login': (BuildContext context) => Login(),
   '/home': (BuildContext context) => Dashboard(),
   '/deposits': (BuildContext context) => Deposits(),

@@ -8,6 +8,7 @@ class PaymentDetails extends StatefulWidget {
   @override
   PaymentDetailScreen createState() => PaymentDetailScreen();
 }
+
 class PaymentDetailScreen extends State<PaymentDetails> {
   final SaccoAPI api = new SaccoAPI();
   @override

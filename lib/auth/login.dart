@@ -41,8 +41,7 @@ class LoginFormState extends State<Login> {
               ),
               TextFormField(
                 obscureText: true,
-                decoration:
-                    InputDecoration(hintText: 'Pin', labelText: 'Pin'),
+                decoration: InputDecoration(hintText: 'Pin', labelText: 'Pin'),
                 validator: this._validatePassword,
                 onSaved: (String password) {
                   this._credentials.password = password;

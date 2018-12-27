@@ -11,8 +11,8 @@ class NetworkUtil {
 
   String bearerToken;
 
-  Future<dynamic> get(String url) {
-    getToken();
+  Future<dynamic> get(String url) async {
+    await getToken();
     return http.get(url, headers: {
       HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded',
       HttpHeaders.authorizationHeader: 'Bearer $bearerToken',
@@ -31,8 +31,8 @@ class NetworkUtil {
     });
   }
 
-  Future<dynamic> post(String url, {Map body, encoding}) {
-    getToken();
+  Future<dynamic> post(String url, {Map body, encoding}) async {
+    await getToken();
     return http
         .post(url,
             body: body,

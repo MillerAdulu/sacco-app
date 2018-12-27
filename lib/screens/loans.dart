@@ -31,15 +31,16 @@ class LoanScreen extends State<Loans> {
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           ListTile(
-                            leading: Text('${snapshot.data[index].memberLoanId}'),
-                            title: Text(
-                                '${snapshot.data[index].loanAmount}'),
-                            subtitle: Text(
-                                '${snapshot.data[index].loanPurpose}'),
+                            leading:
+                                Text('${snapshot.data[index].memberLoanId}'),
+                            title: Text('${snapshot.data[index].loanAmount}'),
+                            subtitle:
+                                Text('${snapshot.data[index].loanPurpose}'),
                           ),
                           ListTile(
                             leading: Icon(Icons.place),
-                            title: Text('${snapshot.data[index].repaymentPeriod}'),
+                            title:
+                                Text('${snapshot.data[index].repaymentPeriod}'),
                             subtitle: Text(
                                 '${snapshot.data[index].loanRepaymentStatus.loanRepaymentStatus}, ${snapshot.data[index].loanRepaymentStatus.loanRepaymentStatus}'),
                           ),
