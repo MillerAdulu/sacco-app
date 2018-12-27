@@ -20,6 +20,7 @@ class AddDepositScreen extends State<AddDeposit> {
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
           title: Text('Add Deposit'),
         ),
@@ -27,6 +28,7 @@ class AddDepositScreen extends State<AddDeposit> {
         body: Form(
             key: _addDepositFormKey,
             child: Container(
+              color: Theme.of(context).backgroundColor,
                 padding: EdgeInsets.all(20.0),
                 child: ListView(children: <Widget>[
                   TextFormField(
@@ -40,8 +42,8 @@ class AddDepositScreen extends State<AddDeposit> {
                   Container(
                       width: screenSize.width,
                       child: RaisedButton(
+                        color: Theme.of(context).buttonColor,
                         onPressed: addMpesaDeposit,
-                        color: Colors.blue,
                         child: Text(
                           'Deposit With Mpesa',
                           style: TextStyle(color: Colors.white),

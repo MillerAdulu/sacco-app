@@ -14,6 +14,7 @@ class LoanScreen extends State<Loans> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         title: Text('Loans'),
       ),

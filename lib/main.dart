@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Sacco',
       home: Scaffold(
+        backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
           title: Text('Sacco')
         ),
@@ -19,6 +20,12 @@ class MyApp extends StatelessWidget {
           )
       ),
       routes: routes,
+      theme: ThemeData(
+        primaryColor: Color.fromRGBO(52, 79, 159, 1),
+        accentColor: Color.fromRGBO(62, 63, 67, 1),
+        backgroundColor: Color.fromRGBO(241, 213, 214, 1),
+        buttonColor: Color.fromRGBO(160, 123, 63, 1)
+      ),
     );
   }
 }

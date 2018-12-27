@@ -28,6 +28,7 @@ class LoginFormState extends State<Login> {
     return Form(
         key: _loginFormKey,
         child: Container(
+          color: Theme.of(context).backgroundColor,
             padding: EdgeInsets.all(20.0),
             child: ListView(children: <Widget>[
               TextFormField(
@@ -51,7 +52,7 @@ class LoginFormState extends State<Login> {
                   width: screenSize.width,
                   child: RaisedButton(
                     onPressed: this._login,
-                    color: Colors.blue,
+                    color: Theme.of(context).buttonColor,
                     child: Text(
                       'Login',
                       style: TextStyle(color: Colors.white),

@@ -24,6 +24,7 @@ class DepositScreen extends State<Deposits> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         title: Text('Deposits'),
       ),

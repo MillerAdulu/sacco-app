@@ -78,7 +78,7 @@ class _SaccoDrawerState extends State<SaccoDrawer> {
         ListTile(
           title: Text('Log Out'),
           onTap: () {
-            logOut();
+            clearPrefs();
             Navigator.pushReplacementNamed(context, '/');
           },
           leading: const Icon(Icons.power_settings_new),
@@ -87,7 +87,7 @@ class _SaccoDrawerState extends State<SaccoDrawer> {
     ));
   }
 
-  void logOut() async {
+  void clearPrefs() async {
     prefs = await SharedPreferences.getInstance();
     prefs.clear();
   }

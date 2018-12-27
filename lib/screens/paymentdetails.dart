@@ -14,6 +14,7 @@ class PaymentDetailScreen extends State<PaymentDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         title: Text('Payment Details'),
       ),
