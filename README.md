@@ -1,4 +1,4 @@
-# sedcapp
+# Sacco App
 
 A new Flutter project.
 
