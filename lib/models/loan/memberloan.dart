@@ -3,7 +3,7 @@ library memberloan;
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-import 'package:sedcapp/models/member/member.dart';
+import 'package:saccoapp/models/member/member.dart';
 import 'loantype.dart';
 import 'repaymentstatus.dart';
 import 'issuingstatus.dart';

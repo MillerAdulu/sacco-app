@@ -3,8 +3,8 @@ library deposit;
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-import 'package:sedcapp/models/member/member.dart';
-import 'package:sedcapp/models/payment/paymentmethod.dart';
+import 'package:saccoapp/models/member/member.dart';
+import 'package:saccoapp/models/payment/paymentmethod.dart';
 
 part 'deposit.g.dart';
 

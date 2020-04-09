@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:sedcapp/partials/drawer.dart';
-import 'package:sedcapp/models/deposit/deposit.dart';
-import 'package:sedcapp/utils/api.dart';
+import 'package:saccoapp/partials/drawer.dart';
+import 'package:saccoapp/models/deposit/deposit.dart';
+import 'package:saccoapp/utils/api.dart';
 
 class Deposits extends StatefulWidget {
   @override

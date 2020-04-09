@@ -2,14 +2,14 @@ import 'dart:async';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'network.dart';
-import 'package:sedcapp/serializer/serializers.dart';
+import 'package:saccoapp/serializer/serializers.dart';
 
-import 'package:sedcapp/models/member/user.dart';
-import 'package:sedcapp/models/deposit/deposit.dart';
-import 'package:sedcapp/models/address/address.dart';
-import 'package:sedcapp/models/loan/memberloan.dart';
-import 'package:sedcapp/models/payment/paymentdetail.dart';
-import 'package:sedcapp/models/deposit/mpesastkpushresponse.dart';
+import 'package:saccoapp/models/member/user.dart';
+import 'package:saccoapp/models/deposit/deposit.dart';
+import 'package:saccoapp/models/address/address.dart';
+import 'package:saccoapp/models/loan/memberloan.dart';
+import 'package:saccoapp/models/payment/paymentdetail.dart';
+import 'package:saccoapp/models/deposit/mpesastkpushresponse.dart';
 
 class SaccoAPI {
   NetworkUtil _netUtil = new NetworkUtil();

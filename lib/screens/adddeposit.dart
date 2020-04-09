@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:sedcapp/partials/drawer.dart';
-import 'package:sedcapp/utils/api.dart';
-import 'package:sedcapp/models/deposit/mpesastkpushresponse.dart';
+import 'package:saccoapp/partials/drawer.dart';
+import 'package:saccoapp/utils/api.dart';
+import 'package:saccoapp/models/deposit/mpesastkpushresponse.dart';
 
 class AddDeposit extends StatefulWidget {
   @override

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:sedcapp/partials/drawer.dart';
-import 'package:sedcapp/utils/api.dart';
-import 'package:sedcapp/models/loan/memberloan.dart';
+import 'package:saccoapp/partials/drawer.dart';
+import 'package:saccoapp/utils/api.dart';
+import 'package:saccoapp/models/loan/memberloan.dart';
 
 class Loans extends StatefulWidget {
   @override

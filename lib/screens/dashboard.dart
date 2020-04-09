@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sedcapp/partials/drawer.dart';
+import 'package:saccoapp/partials/drawer.dart';
 
 class Dashboard extends StatelessWidget {
   @override

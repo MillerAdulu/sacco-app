@@ -7,7 +7,7 @@ import 'county.dart';
 import 'constituency.dart';
 import 'locality.dart';
 import 'postoffice.dart';
-import 'package:sedcapp/models/member/member.dart';
+import 'package:saccoapp/models/member/member.dart';
 
 part 'address.g.dart';
 

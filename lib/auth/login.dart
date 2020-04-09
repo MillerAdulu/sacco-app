@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:validate/validate.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:sedcapp/utils/api.dart';
-import 'package:sedcapp/models/member/user.dart';
+import 'package:saccoapp/utils/api.dart';
+import 'package:saccoapp/models/member/user.dart';
 
 class Login extends StatefulWidget {
   @override

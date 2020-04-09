@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'package:sedcapp/auth/login.dart';
-import 'package:sedcapp/screens/dashboard.dart';
-import 'package:sedcapp/screens/deposits.dart';
-import 'package:sedcapp/screens/addresses.dart';
-import 'package:sedcapp/screens/loans.dart';
-import 'package:sedcapp/screens/paymentdetails.dart';
-import 'package:sedcapp/screens/adddeposit.dart';
+import 'package:saccoapp/auth/login.dart';
+import 'package:saccoapp/screens/dashboard.dart';
+import 'package:saccoapp/screens/deposits.dart';
+import 'package:saccoapp/screens/addresses.dart';
+import 'package:saccoapp/screens/loans.dart';
+import 'package:saccoapp/screens/paymentdetails.dart';
+import 'package:saccoapp/screens/adddeposit.dart';
 
 final routes = <String, WidgetBuilder>{
   '/login': (BuildContext context) => Login(),

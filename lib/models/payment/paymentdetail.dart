@@ -3,7 +3,7 @@ library paymentdetail;
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-import 'package:sedcapp/models/member/member.dart';
+import 'package:saccoapp/models/member/member.dart';
 import 'paymentmethod.dart';
 
 part 'paymentdetail.g.dart';
