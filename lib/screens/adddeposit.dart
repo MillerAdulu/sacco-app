@@ -70,7 +70,7 @@ class ShowDepForm extends State<ShowForm> {
       _addDepositFormKey.currentState.save();
       api.mpesaDeposit(depositAmount).then((result) {
         if (result is MpesaSTKResponse) {
-          if (result.ResponseCode == "0") {
+          if (result.responseCode == "0") {
             Scaffold.of(context).showSnackBar(SnackBar(
               content: Text('Success! Please wait to enter your pin.'),
               action: SnackBarAction(
@@ -80,7 +80,7 @@ class ShowDepForm extends State<ShowForm> {
             ));
           } else {
             Scaffold.of(context).showSnackBar(SnackBar(
-              content: Text('${result.CustomerMessage}'),
+              content: Text('${result.customerMessage}'),
             ));
           }
         } else {
